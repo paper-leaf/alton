@@ -215,8 +215,9 @@
          * Stops default scroll animations when called
          * ============================================================================ */
         function stopDefaultAnimate(event) {
-            event.preventDefault();
+            event.preventDefault(event);
             event.stopPropagation();
+            return false;
         }
 
         /* ============================================================================
@@ -224,14 +225,13 @@
          * -------------------
          * All the code to move the page up
          * ============================================================================ */
-        $.fn.moveUp = function () {
+        $.fn.moveUp = function (event) {
             if ($(window).scrollTop() >= 0 && ($(window).scrollTop() <= $(current).scrollTop()) && top === true) {
                 // Check if top of page
                 // Update the selectors
                 previous = current;
                 current = next;
                 next = current.next();
-                stopDefaultAnimate(event); // Prevent default animation for scrolls
 
                 // Set Slide Indexes and Fade Slide Numbers
                 slideIndex(current, false);
@@ -240,6 +240,7 @@
                 // Update top variable
                 top = false;
                 $(document).scrollTo(current); // Scroll to selected element
+                return stopDefaultAnimate(event); // Prevent default animation for scrolls
             } else if (!bodyScroll && next && $(current).offset().top < $(window).scrollTop() + 1) {
                 // Check if slide
                 if (next.hasClass(singleSlideClass)) {
@@ -273,7 +274,7 @@
          * -------------------
          * All the code to move the page down
          * ============================================================================ */
-        $.fn.moveDown = function () {
+        $.fn.moveDown = function (event) {
             if ($('.' + settings.fullSlideClass).offset().top + 1 > $(window).scrollTop() && previous && $(window).scrollTop() > 0) {
                 // Check if not scrolling to top of page
                 if ($(current).offset().top >= $(window).scrollTop()) {
@@ -297,8 +298,9 @@
                     slideIndex(current, true);
                     slideIndex(previous, true);
                 }
-                stopDefaultAnimate(event); // Stop default scrolling animations
+                
                 $(document).scrollTo(current); // Scroll to proper element
+                return stopDefaultAnimate(event); // Prevent default animation for scrolls
             } else if (!bodyScroll && $('.' + settings.fullSlideClass).offset().top < $(window).scrollTop()) {
                 // Update the selectors
                 current = previous;
@@ -313,7 +315,7 @@
                 $(document).scrollTo(current);
 
                 // Stop default scrolling
-                stopDefaultAnimate(event);
+                return stopDefaultAnimate(event); // Prevent default animation for scrolls
             }
 
             // Update movement variables
@@ -321,7 +323,7 @@
             down = false;
 
             // Stop default scrolling animations
-            stopDefaultAnimate(event);
+            return stopDefaultAnimate(event); // Prevent default animation for scrolls
         };
 
         /* ============================================================================
@@ -366,12 +368,13 @@
             if (event.originalEvent.detail/3 >= 1 && !down && downCount < 1 || event.originalEvent.wheelDelta / 3 <= -1 && !down && downCount < 1) {
                 // Check if scrolling down
                 downCount += 1;
-                $(document).moveUp();
+                $(document).moveUp(event);
             } else if (event.originalEvent.detail / 3 <= -1 && !up && upCount < 1 || event.originalEvent.wheelDelta / 3 >= 1 && !up && upCount < 1) {
                 // Check if not scrolling up
                 upCount += 1;
-                $(document).moveDown();
+                $(document).moveDown(event);
             }
+            stopDefaultAnimate(event);
             return false;
         }
 
