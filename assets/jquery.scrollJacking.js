@@ -6,7 +6,7 @@
  * 
  * Author: Paper Leaf
  *
- * A full featured scrolling pluding for creating
+ * A full featured scrolling plugin for creating
  * immersive featured sections or headers.
  *
  * Credit: 
