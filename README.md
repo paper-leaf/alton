@@ -11,8 +11,10 @@ A full featured scrolling plugin for creating
 
 immersive featured sections or headers.
 
+
 Credit: 
 is_mobile() based off these helpful posts
+
 - http://stackoverflow.com/questions/3514784/what-is-the-best-way-to-detect-a-handheld-device-in-jquery
 
 Getting stable scroll events was helped hugely by Huge Inc's insights
