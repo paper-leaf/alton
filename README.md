@@ -7,9 +7,7 @@ http://www.paper-leaf.com
 
 Author: Paper Leaf
 
-A full featured scrolling plugin for creating
-
-immersive featured sections or headers.
+A full featured scrolling plugin for creating immersive featured sections or headers.
 
 
 Credit: 
