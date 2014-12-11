@@ -60,7 +60,7 @@
             useSlideNumbers: false, // Enable or disable slider
             slideNumbersBorderColor: '#fff',
             slideNumbersColor: '#f8f8f8',
-            animationType: 'cubic-bezier(2.63, 2.64, 2, 2)',
+            animationType: 'cubic-bezier(0.63, 0.64, 1, 0.9)',
         };
 
     $.fn.scrollJack = function (options) {
@@ -282,6 +282,7 @@
                         slideNumbersFade(true);
                     }
                     $(document).scrollTo(current); // Scroll to selected element
+                    return stopDefaultAnimate(event); // Prevent default animation for scrolls
                 } else {
                     // Update the selectors
                     previous = $('.' + singleSlideClass + ':last');
@@ -296,7 +297,9 @@
                         }
                     }
                     $(document).scrollTo(current); // Scroll to selected element
+                    return stopDefaultAnimate(event); // Prevent default animation for scrolls
                 }
+                return stopDefaultAnimate(event); // Prevent default animation for scrolls
             }
         };
 
@@ -371,7 +374,7 @@
          * ============================================================================ */
         $.fn.scrollTo = function (element) {
             if (element !== last) {
-                $("body,html").stop(true, true).animate({scrollTop: $(element).offset().top}, settings.animationType);
+                $("body,html").stop(true, true).animate({scrollTop: $(element).offset().top,easing: settings.animationType});
             } else {
                 $("body,html").stop(true, true).animate({scrollTop: $(document).height() - windowHeight}, settings.animationType);
             }
