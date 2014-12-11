@@ -29,5 +29,5 @@ There is a couple of features that this plugin covers.
 ### Featured Scroll. ###
 The Idea behind featured scroll is that you have a header and footer secition with a featured area of projects or something in the middle. 
 
-## Header Scroll ##
+### Header Scroll ###
 The Idea behind header scroll is that you have a featured header area, that on scroll dissapears, an you find yourself at the main contnet, with native scrolling enabled.
