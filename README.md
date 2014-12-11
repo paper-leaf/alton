@@ -36,9 +36,9 @@ The Idea behind header scroll is that you have a featured header area, that on s
 #!javascript
 
 $(document).scrollJack({
-	firstClass : 'header', // classname of the first element in your page content
-        bodyContainer: 'pageWrapper', // ID of content container
-        scrollMode: 'headerScroll', // Choose scroll mode
-        animationType: 'cubic-bezier(2.63, 2.64, 2, 2)',
+    firstClass : 'header', // classname of the first element in your page content
+    bodyContainer: 'pageWrapper', // ID of content container
+    scrollMode: 'headerScroll', // Choose scroll mode
+    animationType: 'cubic-bezier(2.63, 2.64, 2, 2)',
 });
 ```
