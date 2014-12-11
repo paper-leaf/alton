@@ -10,7 +10,7 @@ Author: **Paper Leaf**
 A full featured scrolling plugin for creating immersive featured sections or headers.
 
 
-Credit: 
+### Credit: ### 
 is_mobile() based off these helpful posts
 
 - http://stackoverflow.com/questions/3514784/what-is-the-best-way-to-detect-a-handheld-device-in-jquery
@@ -23,11 +23,11 @@ Stabilizing keypress events was helped in large part by jQuery OnePage Scroll
 
 - https://github.com/peachananr/onepage-scroll
 
-**Use Cases**
+## Use Cases ##
 There is a couple of features that this plugin covers.
 
-1. Featured Scroll.
+### Featured Scroll. ###
 The Idea behind featured scroll is that you have a header and footer secition with a featured area of projects or something in the middle. 
 
-2. Header Scroll
+## Header Scroll ##
 The Idea behind header scroll is that you have a featured header area, that on scroll dissapears, an you find yourself at the main contnet, with native scrolling enabled.
