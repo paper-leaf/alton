@@ -22,26 +22,26 @@
  * License: GPL v3
  * =============================================================================== */
 
-/* ===============================================================================
- * Table of Contents
- * -------------------
- * 
- * 1. Default Options
- * 2. Global Variables
- * 3. Initiate Layout
- * 4. Mobile Device Check
- * 5. Click to Navigate
- * 6. Update Position
- * 7. Move Up
- * 8. Move Down
- * 9. Prevent Default Animations
- * 10. Scroll To
- * 11. Featured Scroll
- * 12. Header Scroll
- * 
- * =============================================================================== */
-
 (function ($) {
+    /* ===============================================================================
+     * Table of Contents
+     * -------------------
+     * 
+     * 1. Default Options
+     * 2. Global Variables
+     * 3. Initiate Layout
+     * 4. Mobile Device Check
+     * 5. Click to Navigate
+     * 6. Update Position
+     * 7. Move Up
+     * 8. Move Down
+     * 9. Prevent Default Animations
+     * 10. Scroll To
+     * 11. Featured Scroll
+     * 12. Header Scroll
+     * 
+     * =============================================================================== */
+     
     /* =============================================================================
      * Default Options
      * -------------------
@@ -56,7 +56,11 @@
             lastClass: 'footer', // last block to scroll to
             slideNumbersContainer: 'slide-numbers', // ID of Slide Numbers
             bodyContainer: 'pageWrapper', // ID of content container
-            scrollMode: 'featuredScroll' // Choose scroll mode
+            scrollMode: 'featuredScroll', // Choose scroll mode
+            useSlideNumbers: false, // Enable or disable slider
+            slideNumbersBorderColor: '#fff',
+            slideNumbersColor: '#f8f8f8',
+            animationType: 'cubic-bezier(2.63, 2.64, 2, 2)',
         };
 
     $.fn.scrollJack = function (options) {
@@ -65,55 +69,74 @@
          * -------------------
          * Update the default settings with user selected options
          * ============================================================================= */
-        var settings = $.extend(true, {}, defaults, options),
+        var settings = $.extend(true, {}, defaults, options);
 
             /* =============================================================================
              * Global Variables
              * -------------------
              * Setting up variables that will be used throught the plugin
              * ============================================================================= */
-            singleSlideClass = $('.' + settings.fullSlideClass + ' ' + settings.nextElement).attr('class'),
-            singleSlide = document.getElementsByClassName(singleSlideClass),
+            var singleSlideClass = $('.' + settings.fullSlideClass + ' ' + settings.nextElement).attr('class'),
+                singleSlide = document.getElementsByClassName(singleSlideClass),
+                bodyScroll,
+                scrolling,
+                down = false,
+                up = false,
+                current = $('.' + settings.firstClass), // current element is the topmost element
+                next = $('.' + singleSlideClass + ':first'),
+                previous = null,
+                last = $('.' + settings.lastClass),
+                projectCount = $('.' + settings.fullSlideClass).children().length,
+                slideNumbers,
+                timeout,
+                top = true,
+                upCount = 0,
+                downCount = 0,
+                windowTop = $(window).scrollTop(),
+                windowHeight = $(window).height(),
+                i;
+
+        /* =============================================================================
+         * Position Variables
+         * -------------------
+         * Update postion variable if headerScroll
+         * ============================================================================= */
+        if (settings.scrollMode === 'headerScroll') {
             current = $('.' + settings.firstClass), // current element is the topmost element
-            next = $('.' + singleSlideClass + ':first'),
-            previous = null,
-            last = $('.' + settings.lastClass),
-            bodyScroll,
-            scrolling,
-            down = false,
-            up = false,
-            projectCount = $('.' + settings.fullSlideClass).children().length,
-            slideNumbers,
-            timeout,
-            top = true,
-            upCount = 0,
-            downCount = 0,
-            windowTop = $(window).scrollTop(),
-            windowHeight = $(window).height(),
-            i;
+            next = $('.' + settings.bodyContainer + ':first');
+        }
 
         /* ============================================================================
          * Initiate Layout
          * -------------------
          * Get the slides to 100% height, and add pagination
          * ============================================================================ */
-        function initiateLayout() {
-            for (i = singleSlide.length - 1; i >= 0; i -= 1) {
-                $(singleSlide[i]).css('height', windowHeight + 10);
+        function initiateLayout(style) {
+            if (style === 'featuredScroll') {
+                for (i = singleSlide.length - 1; i >= 0; i -= 1) {
+                    $(singleSlide[i]).css('height', windowHeight + 10);
+                }
+
+                if (settings.useSlideNumbers) {
+                    // Create Slider Buttons
+                    $('#' + settings.bodyContainer).append('<div style="height: 100%;position: fixed;top: 0;right: 0px;bottom: 0px;width: 86px;z-index: 999;" id="' + settings.slideNumbersContainer + '"></div>');
+                    $('#' + settings.bodyContainer + ' #' + settings.slideNumbersContainer).append('<ul></ul>');
+                    var testCount = 0;
+
+                    while (testCount < projectCount) {
+                        $('#' + settings.bodyContainer + ' #' + settings.slideNumbersContainer + ' ul').append('<li class="paginate" style="cursor:pointer;border-radius:50%;list-style: none;background: '+settings.slideNumbersColor+';border: 2px solid '+settings.slideNumbersBorderColor+';border-radius: 50%;height: 12px;width: 12px;margin: 5px 0;"></ul>');
+                        testCount += 1;
+                    }
+
+                    // Store the slidenumbers
+                    slideNumbers =  document.getElementsByClassName('paginate');
+                }
+            } else {
+                $('.'+settings.firstClass).css('height', windowHeight + 10);
+                if (!$('.'+settings.firstClass).hasClass('active')) {
+                    $('.'+settings.firstClass).toggleClass('active');
+                }
             }
-
-            // Create Slider Buttons
-            $('#' + settings.bodyContainer).append('<div id="' + settings.slideNumbersContainer + '"></div>');
-            $('#' + settings.bodyContainer + ' #' + settings.slideNumbersContainer).append('<ul></ul>');
-            var testCount = 0;
-
-            while (testCount < projectCount) {
-                $('#' + settings.bodyContainer + ' #' + settings.slideNumbersContainer + ' ul').append('<li class="paginate" style="cursor:pointer;"></ul>');
-                testCount += 1;
-            }
-
-            // Store the slidenumbers
-            slideNumbers =  document.getElementsByClassName('paginate');
         }
 
         /* ============================================================================
@@ -144,10 +167,12 @@
 
         // Slide Numbers Fade
         function slideNumbersFade(fadeInOut) {
-            if (fadeInOut) {
-                $('#' + settings.slideNumbersContainer).fadeIn();
-            } else {
-                $('#' + settings.slideNumbersContainer).fadeOut();
+            if (settings.useSlideNumbers) {
+                if (fadeInOut) {
+                    $('#' + settings.slideNumbersContainer).fadeIn();
+                } else {
+                    $('#' + settings.slideNumbersContainer).fadeOut();
+                }
             }
         }
 
@@ -234,8 +259,10 @@
                 next = current.next();
 
                 // Set Slide Indexes and Fade Slide Numbers
-                slideIndex(current, false);
-                slideNumbersFade(true);
+                if (settings.useSlideNumbers) {
+                    slideIndex(current, false);
+                    slideNumbersFade(true);
+                }
 
                 // Update top variable
                 top = false;
@@ -249,9 +276,11 @@
                     current = next;
                     next = $(current).next();
                     // Set Slide Indexes and Fade Slide Numbers
-                    slideIndex(previous, true);
-                    slideIndex(current, false);
-                    slideNumbersFade(true);
+                    if (settings.useSlideNumbers) {
+                        slideIndex(previous, true);
+                        slideIndex(current, false);
+                        slideNumbersFade(true);
+                    }
                     $(document).scrollTo(current); // Scroll to selected element
                 } else {
                     // Update the selectors
@@ -261,8 +290,10 @@
                     if ($(window).scrollTop() + windowHeight + 10 >= $(document).height() - $('.ctas').height()) {
                         // Check for bottom
                         // Set Slide Indexes and Fade Slide Numbers
-                        slideIndex(previous, false);
-                        slideNumbersFade(false);
+                        if (settings.useSlideNumbers) {
+                            slideIndex(previous, false);
+                            slideNumbersFade(false);
+                        }
                     }
                     $(document).scrollTo(current); // Scroll to selected element
                 }
@@ -284,8 +315,10 @@
                     next = $('.' + singleSlideClass);
 
                     // Update and fade slideNumbers
-                    slideNumbersFade(false);
-                    slideIndex(next, true);
+                    if (settings.useSlideNumbers) {
+                        slideNumbersFade(false);
+                        slideIndex(next, true);
+                    }
                     // Update top variable as we are at the top of the page
                     top = true;
                 } else {
@@ -295,8 +328,10 @@
                     next = $('.' + singleSlideClass);
 
                     // Update and fade slideNumbers
-                    slideIndex(current, true);
-                    slideIndex(previous, true);
+                    if (settings.useSlideNumbers) {
+                        slideIndex(current, true);
+                        slideIndex(previous, true);
+                    }
                 }
                 
                 $(document).scrollTo(current); // Scroll to proper element
@@ -308,9 +343,12 @@
                 next = $(current).next();
 
                 // Update and fade slideNumbers
-                slideIndex(current, false);
-                slideIndex(next, true);
-                slideNumbersFade(true);
+                if (settings.useSlideNumbers) {
+                    slideIndex(current, false);
+                    slideIndex(next, true);
+                    slideNumbersFade(true);
+                }
+
                 // Scroll to proper element
                 $(document).scrollTo(current);
 
@@ -333,9 +371,9 @@
          * ============================================================================ */
         $.fn.scrollTo = function (element) {
             if (element !== last) {
-                $("body,html").stop(true, true).animate({scrollTop: $(element).offset().top}, "slow");
+                $("body,html").stop(true, true).animate({scrollTop: $(element).offset().top}, settings.animationType);
             } else {
-                $("body,html").stop(true, true).animate({scrollTop: $(document).height() - windowHeight}, "slow");
+                $("body,html").stop(true, true).animate({scrollTop: $(document).height() - windowHeight}, settings.animationType);
             }
         };
 
@@ -374,8 +412,7 @@
                 upCount += 1;
                 $(document).moveDown(event);
             }
-            stopDefaultAnimate(event);
-            return false;
+            return stopDefaultAnimate(event);
         }
 
         /* ============================================================================
@@ -385,31 +422,34 @@
          * 
          * ====== COMING SOON =======
          * ============================================================================ */
-        // function headerScroll(event) {
-        //   if (event.originalEvent.detail > 0 || event.originalEvent.wheelDelta < 0) {
-        //     if ($(next).offset().top > 0 && $(window).scrollTop() < $('.'+settings.firstClass).height()){
-        //       if ($('.'+settings.firstClass).hasClass('active')) {
-        //         $('.'+settings.firstClass).toggleClass('active');
-        //         scrollTo(next);
-        //         stopDefaultAnimate();
-        //         return false;
-        //       } else if (!$('html, body').is(':animated')){
-        //         return true;
-        //       }
-        //   }
-        //   else {
-        //     return true;
-        //   }
-        // } else {
-        //   if (!$('.'+settings.firstClass).hasClass('active') && $(window).scrollTop() <= $('.'+settings.firstClass).height() ) {
-        //       $('.'+settings.firstClass).toggleClass('active');
-        //       $("html, body").animate({scrollTop: $('.'+settings.firstClass).offset().top}, "slow");
-        //     } else if (!$('html, body').is(':animated')){
-        //       return true;
-        //     }
-        //   }
-        //   return false;
-        // }
+        function headerScroll(event) {
+          if (event.originalEvent.detail > 0 || event.originalEvent.wheelDelta < 0) {
+            if ($(next).offset().top > 0 && $(window).scrollTop() < $('.'+settings.firstClass).height()){
+              if ($('.'+settings.firstClass).hasClass('active')) {
+                $('.'+settings.firstClass).toggleClass('active');
+                $(document).scrollTo(next);
+                previous = current;
+                current = next;
+                return stopDefaultAnimate(event);
+              } else if (!$('html, body').is(':animated')){
+                return true;
+              }
+          }
+          else {
+            return true;
+          }
+        } else {
+          if (!$('.'+settings.firstClass).hasClass('active') && $(window).scrollTop() <= $('.'+settings.firstClass).height() ) {
+              $('.'+settings.firstClass).toggleClass('active');
+              $(document).scrollTo(previous);
+              next = current;
+              current = previous;
+            } else if (!$('html, body').is(':animated')){
+              return true;
+            }
+          }
+          return false;
+        }
 
 
         /* ============================================================================
@@ -418,8 +458,10 @@
          * Calling all the functions on document load to make sure nothing breaks
          * ============================================================================ */
         $(document).ready(function () {
-            initiateLayout();
-            getCurrentPosition();
+            initiateLayout(settings.scrollMode);
+            if (settings.scrollMode === 'featuredScroll') {
+                getCurrentPosition();
+            }
             if (settings.scrollMode === 'featuredScroll') {
                 $('#slide-numbers li').on("click", function () {
                     clickToNavigate($(this).parent().children().index(this));
@@ -448,9 +490,11 @@
                         break;
                     }
                 });
-                if (!is_mobile()) {
-                    $(document).on({'DOMMouseScroll mousewheel' : featuredScroll });
-                }
+            }
+            if (!is_mobile() && settings.scrollMode === 'featuredScroll') {
+                $(document).on({'DOMMouseScroll mousewheel' : featuredScroll });
+            } else if (!is_mobile() && settings.scrollMode === 'headerScroll') {
+                $(document).on({'DOMMouseScroll mousewheel' : headerScroll });
             }
         });
     };
