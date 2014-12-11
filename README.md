@@ -39,7 +39,7 @@ $(document).scrollJack({
     slideNumbersContainer: 'slide-numbers', // ID of Slide Numbers
     bodyContainer: 'pageWrapper', // ID of content container
     scrollMode: 'featuredScroll', // Choose scroll mode
-    useSlideNumbers: false, // Enable or disable slider
+    useSlideNumbers: false, // Enable or disable slider pagination
     slideNumbersBorderColor: '#fff',
     slideNumbersColor: '#f8f8f8',
     animationType: 'cubic-bezier(2.63, 2.64, 2, 2)',
