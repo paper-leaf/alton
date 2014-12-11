@@ -31,3 +31,14 @@ The Idea behind featured scroll is that you have a header and footer secition wi
 
 ### Header Scroll ###
 The Idea behind header scroll is that you have a featured header area, that on scroll dissapears, an you find yourself at the main contnet, with native scrolling enabled.
+
+```
+#!javascript
+
+$(document).scrollJack({
+	firstClass : 'header', // classname of the first element in your page content
+        bodyContainer: 'pageWrapper', // ID of content container
+        scrollMode: 'headerScroll', // Choose scroll mode
+        animationType: 'cubic-bezier(2.63, 2.64, 2, 2)',
+});
+```
