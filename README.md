@@ -57,19 +57,19 @@ First ensure you have the proper HTML structure:
 #!html
 
 <header class="header"></header>
-<section class="slide-body">
+<section class="full">
 	<div class="slide"></div>
 	<div class="slide"></div>
 	<div class="slide"></div>
 </section>
 <footer class="footer"></footer>
 ```
-
+Next add the following where you want to call it. Note: **If you don't want errors to occur, only run the script on the page where scrolling occurs**
 ```
 #!javascript
 
 $(document).scrollJack({
-	fullSlideClass: 'slide-body',
+	fullSlideClass: 'full',
 	firstClass: 'header',
 	lastClass: 'footer',
 	useSlideNumbers: true,
@@ -93,7 +93,7 @@ First ensure you have the proper HTML structure:
 <!-- Insert Regular Content Here -->
 </section>
 ```
-
+Next add the following where you want to call it. Note: **If you don't want errors to occur, only run the script on the page where scrolling occurs**
 
 ```
 #!javascript
