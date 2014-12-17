@@ -59,8 +59,8 @@
             scrollMode: 'featuredScroll', // Choose scroll mode
             useSlideNumbers: false, // Enable or disable slider
             slideNumbersBorderColor: '#fff',
-            slideNumbersColor: '#f8f8f8',
-            animationType: 'cubic-bezier(0.63, 0.64, 1, 0.9)',
+            slideNumbersColor: '#000',
+            animationType: 'slow',
         };
 
     $.fn.scrollJack = function (options) {
@@ -113,18 +113,20 @@
          * ============================================================================ */
         function initiateLayout(style) {
             if (style === 'featuredScroll') {
+                console.log('test');
                 for (i = singleSlide.length - 1; i >= 0; i -= 1) {
                     $(singleSlide[i]).css('height', windowHeight + 10);
                 }
 
                 if (settings.useSlideNumbers) {
+                    console.log('test2');
                     // Create Slider Buttons
-                    $('#' + settings.bodyContainer).append('<div style="height: 100%;position: fixed;top: 0;right: 0px;bottom: 0px;width: 86px;z-index: 999;" id="' + settings.slideNumbersContainer + '"></div>');
-                    $('#' + settings.bodyContainer + ' #' + settings.slideNumbersContainer).append('<ul></ul>');
+                    $('.' + settings.bodyContainer).append('<div style="height: 100%;position: fixed;top: 0;right: 0px;bottom: 0px;width: 86px;z-index: 999;" id="' + settings.slideNumbersContainer + '"></div>');
+                    $('.' + settings.bodyContainer + ' #' + settings.slideNumbersContainer).append('<ul style="transform: translateY(-50%);-moz-transform: translateY(-50%);-ms-transform: translateY(-50%);-o-transform: translateY(-50%);-webkit-transform: translateY(-50%);top: 50%;position: fixed;"></ul>');
                     var testCount = 0;
 
                     while (testCount < projectCount) {
-                        $('#' + settings.bodyContainer + ' #' + settings.slideNumbersContainer + ' ul').append('<li class="paginate" style="cursor:pointer;border-radius:50%;list-style: none;background: '+settings.slideNumbersColor+';border: 2px solid '+settings.slideNumbersBorderColor+';border-radius: 50%;height: 12px;width: 12px;margin: 5px 0;"></ul>');
+                        $('.' + settings.bodyContainer + ' #' + settings.slideNumbersContainer + ' ul').append('<li class="paginate" style="cursor:pointer;border-radius:50%;list-style: none;background: '+settings.slideNumbersBorderColor+';border:2px solid '+settings.slideNumbersBorderColor+';border-radius: 50%;height: 10px;width: 10px;margin: 5px 0;"></ul>');
                         testCount += 1;
                     }
 
@@ -157,10 +159,12 @@
             if (toggle) {
                 if ($(slideNumbers[$(element).parent().children().index(element)]).hasClass('active')) {
                     $(slideNumbers[$(element).parent().children().index(element)]).toggleClass('active');
+                    $(slideNumbers[$(element).parent().children().index(element)]).css('background', settings.slideNumbersBorderColor);
                 }
             } else {
                 if (!$(slideNumbers[$(element).parent().children().index(element)]).hasClass('active')) {
                     $(slideNumbers[$(element).parent().children().index(element)]).toggleClass('active');
+                    $(slideNumbers[$(element).parent().children().index(element)]).css('background', settings.slideNumbersColor);
                 }
             }
         }
@@ -376,7 +380,7 @@
             if (element !== last) {
                 $("body,html").stop(true, true).animate({scrollTop: $(element).offset().top,easing: settings.animationType});
             } else {
-                $("body,html").stop(true, true).animate({scrollTop: $(document).height() - windowHeight}, settings.animationType);
+                $("body,html").stop(true, true).animate({scrollTop: $(document).height() - windowHeight,easing: settings.animationType});
             }
         };
 
@@ -423,7 +427,6 @@
          * -------------------
          * Scroll jacking for full size header image, then re-enables native scrolling
          * 
-         * ====== COMING SOON =======
          * ============================================================================ */
         function headerScroll(event) {
           if (event.originalEvent.detail > 0 || event.originalEvent.wheelDelta < 0) {
