@@ -60,10 +60,10 @@ First ensure you have the proper HTML structure:
 #!html
 
 <section class="header">
-// Insert Content Here
+<!-- Insert Header Content Here -->
 </section>
 <section class="pageWrapper">
-// Insert Content Here
+<!-- Insert Regular Content Here -->
 </section>
 ```
 
