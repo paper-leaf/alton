@@ -113,13 +113,11 @@
          * ============================================================================ */
         function initiateLayout(style) {
             if (style === 'featuredScroll') {
-                console.log('test');
                 for (i = singleSlide.length - 1; i >= 0; i -= 1) {
                     $(singleSlide[i]).css('height', windowHeight + 10);
                 }
 
                 if (settings.useSlideNumbers) {
-                    console.log('test2');
                     // Create Slider Buttons
                     $('.' + settings.bodyContainer).append('<div style="height: 100%;position: fixed;top: 0;right: 0px;bottom: 0px;width: 86px;z-index: 999;" id="' + settings.slideNumbersContainer + '"></div>');
                     $('.' + settings.bodyContainer + ' #' + settings.slideNumbersContainer).append('<ul style="transform: translateY(-50%);-moz-transform: translateY(-50%);-ms-transform: translateY(-50%);-o-transform: translateY(-50%);-webkit-transform: translateY(-50%);top: 50%;position: fixed;"></ul>');
