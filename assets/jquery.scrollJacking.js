@@ -197,11 +197,10 @@
             } else {
                 next = $('.' + settings.lastClass);
             }
-            $('.paginate').each(function () {
-                if ($(this).hasClass('active')) {
-                    $(this).toggleClass('active');
-                }
-            });
+            
+            console.log(elementContainer[elementIndex]);
+            console.log($('#'+settings.slideNumbersContainer+' li.active'));
+            slideIndex($('#'+settings.slideNumbersContainer+' li.active'), true);
             slideIndex(elementContainer[elementIndex], false);
         }
 
@@ -211,26 +210,32 @@
          * Update current, previous and next, based on window position on load.
          * ============================================================================ */
         function getCurrentPosition() {
-            if ($(window).scrollTop() >= next.offset().top) {
+            if ($(window).scrollTop() >= next.offset().top && $(window).scrollTop()+$(window).height() != $(document).height()) {
+                var offsetTest;
                 $('.' + singleSlideClass).each(function () {
-                    var offsetTest = $(this).offset().top;
-                    if (offsetTest === $(window).scrollTop() - 28) {
+                    offsetTest = $(this).offset().top;
+                    if (offsetTest <= $(window).scrollTop()) {
                         if ($(this).prev().hasClass(singleSlideClass)) {
+                            console.log(1);
                             previous = $(this).prev();
                         } else {
+                            console.log(2);
                             previous = $('.' + settings.firstClass);
                         }
                         current = $(this);
-                        if ($(this).next().hasClass(singleSlideClass)) {
+                        if (current.next().hasClass(singleSlideClass)) {
                             next = $(this).next();
+                            console.log(3);
                         } else {
                             next = $('.' + settings.lastClass);
+                            console.log(4);
                         }
                         top = false;
-                        slideIndex(current, false);
                     }
                 });
+                slideIndex(current, false);
             } else {
+                console.log(5);
                 slideNumbersFade(false);
                 $(document).scrollTo(current);
             }
@@ -248,11 +253,11 @@
         }
 
         /* ============================================================================
-         * Move Up
+         * Move Down
          * -------------------
-         * All the code to move the page up
+         * All the code to move the page down
          * ============================================================================ */
-        $.fn.moveUp = function (event) {
+        $.fn.moveDown = function (event) {
             if ($(window).scrollTop() >= 0 && ($(window).scrollTop() <= $(current).scrollTop()) && top === true) {
                 // Check if top of page
                 // Update the selectors
@@ -281,7 +286,6 @@
                     if (settings.useSlideNumbers) {
                         slideIndex(previous, true);
                         slideIndex(current, false);
-                        slideNumbersFade(true);
                     }
                     $(document).scrollTo(current); // Scroll to selected element
                     return stopDefaultAnimate(event); // Prevent default animation for scrolls
@@ -290,7 +294,7 @@
                     previous = $('.' + singleSlideClass + ':last');
                     current = last;
                     next = null;
-                    if ($(window).scrollTop() + windowHeight + 10 >= $(document).height() - $('.ctas').height()) {
+                    if ($(window).scrollTop() + windowHeight + 10  >= $(document).height() - $(last).height()) {
                         // Check for bottom
                         // Set Slide Indexes and Fade Slide Numbers
                         if (settings.useSlideNumbers) {
@@ -306,11 +310,11 @@
         };
 
         /* ============================================================================
-         * Move Down
+         * Move Up
          * -------------------
-         * All the code to move the page down
+         * All the code to move the page up
          * ============================================================================ */
-        $.fn.moveDown = function (event) {
+        $.fn.moveUp = function (event) {
             if ($('.' + settings.fullSlideClass).offset().top + 1 > $(window).scrollTop() && previous && $(window).scrollTop() > 0) {
                 // Check if not scrolling to top of page
                 if ($(current).offset().top >= $(window).scrollTop()) {
@@ -322,7 +326,7 @@
                     // Update and fade slideNumbers
                     if (settings.useSlideNumbers) {
                         slideNumbersFade(false);
-                        slideIndex(next, true);
+                        slideIndex(next, false);
                     }
                     // Update top variable as we are at the top of the page
                     top = true;
@@ -411,11 +415,11 @@
             if (event.originalEvent.detail/3 >= 1 && !down && downCount < 1 || event.originalEvent.wheelDelta / 3 <= -1 && !down && downCount < 1) {
                 // Check if scrolling down
                 downCount += 1;
-                $(document).moveUp(event);
+                $(document).moveDown(event);
             } else if (event.originalEvent.detail / 3 <= -1 && !up && upCount < 1 || event.originalEvent.wheelDelta / 3 >= 1 && !up && upCount < 1) {
                 // Check if not scrolling up
                 upCount += 1;
-                $(document).moveDown(event);
+                $(document).moveUp(event);
             }
             return stopDefaultAnimate(event);
         }
@@ -467,7 +471,7 @@
                 getCurrentPosition();
             }
             if (settings.scrollMode === 'featuredScroll') {
-                $('#slide-numbers li').on("click", function () {
+                $('#'+ settings.slideNumbersContainer +' li').on("click", function () {
                     clickToNavigate($(this).parent().children().index(this));
                 });
 
@@ -475,16 +479,16 @@
                 $(document).keydown(function (event) {
                     switch (event.which) {
                     case 40: // arrowUp
-                        $(document).moveUp();
+                        $(document).moveDown(event);
                         break;
                     case 33: // pageUp 
-                        $(document).moveUp();
+                        $(document).moveDown(event);
                         break;
                     case 34: // pageDown
-                        $(document).moveDown();
+                        $(document).moveUp(event);
                         break;
                     case 38: // arrowDown
-                        $(document).moveDown();
+                        $(document).moveUp(event);
                         break;
                     case 50: // home
                         $(document).scrollTo('.' + settings.firstClass);
