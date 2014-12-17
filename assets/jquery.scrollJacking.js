@@ -167,7 +167,11 @@
             }
         }
 
-        // Slide Numbers Fade
+        /* ============================================================================
+         * Slide Numbers Fade
+         * -------------------
+         * Fades out the slide numbers
+         * ============================================================================ */
         function slideNumbersFade(fadeInOut) {
             if (settings.useSlideNumbers) {
                 if (fadeInOut) {
@@ -198,8 +202,6 @@
                 next = $('.' + settings.lastClass);
             }
             
-            console.log(elementContainer[elementIndex]);
-            console.log($('#'+settings.slideNumbersContainer+' li.active'));
             slideIndex($('#'+settings.slideNumbersContainer+' li.active'), true);
             slideIndex(elementContainer[elementIndex], false);
         }
@@ -210,32 +212,27 @@
          * Update current, previous and next, based on window position on load.
          * ============================================================================ */
         function getCurrentPosition() {
-            if ($(window).scrollTop() >= next.offset().top && $(window).scrollTop()+$(window).height() != $(document).height()) {
+            if ($(window).scrollTop() >= next.offset().top && $(window).scrollTop()+$(window).height() !== $(document).height()) {
                 var offsetTest;
                 $('.' + singleSlideClass).each(function () {
                     offsetTest = $(this).offset().top;
                     if (offsetTest <= $(window).scrollTop()) {
                         if ($(this).prev().hasClass(singleSlideClass)) {
-                            console.log(1);
                             previous = $(this).prev();
                         } else {
-                            console.log(2);
                             previous = $('.' + settings.firstClass);
                         }
                         current = $(this);
                         if (current.next().hasClass(singleSlideClass)) {
                             next = $(this).next();
-                            console.log(3);
                         } else {
                             next = $('.' + settings.lastClass);
-                            console.log(4);
                         }
                         top = false;
                     }
                 });
                 slideIndex(current, false);
             } else {
-                console.log(5);
                 slideNumbersFade(false);
                 $(document).scrollTo(current);
             }
