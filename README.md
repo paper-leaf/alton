@@ -47,10 +47,53 @@ $(document).scrollJack({
 ```
 
 ### Featured Scroll. ###
-The Idea behind featured scroll is that you have a header and footer secition with a featured area of projects or something in the middle. 
+The Idea behind featured scroll is that you have a header and footer section with a featured area of projects or something in the middle.
+
+Here is an example for all the options available for featuredScroll:
+
+First ensure you have the proper HTML structure:
+
+```
+#!html
+
+<header class="header"></header>
+<section class="full">
+	<div class="slide"></div>
+	<div class="slide"></div>
+	<div class="slide"></div>
+</section>
+<footer class="footer"></footer>
+```
+Next add the following where you want to call it. Note: **If you don't want errors to occur, only run the script on the page where scrolling occurs**
+```
+#!javascript
+
+$(document).scrollJack({
+	fullSlideClass: 'full',
+	firstClass: 'header',
+	lastClass: 'footer',
+	useSlideNumbers: true,
+});
+```
 
 ### Header Scroll ###
-The Idea behind header scroll is that you have a featured header area, that on scroll dissapears, an you find yourself at the main contnet, with native scrolling enabled.
+The Idea behind header scroll is that you have a featured header area, that on scroll disappears, an you find yourself at the main content, with native scrolling enabled.
+
+Here is an example for all the options available for headerScroll:
+
+First ensure you have the proper HTML structure:
+
+```
+#!html
+
+<section class="header">
+<!-- Insert Header Content Here -->
+</section>
+<section class="pageWrapper">
+<!-- Insert Regular Content Here -->
+</section>
+```
+Next add the following where you want to call it. Note: **If you don't want errors to occur, only run the script on the page where scrolling occurs**
 
 ```
 #!javascript
