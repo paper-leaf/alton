@@ -56,12 +56,13 @@ First ensure you have the proper HTML structure:
 ```
 #!html
 
-<section class="header">
-<!-- Insert Header Content Here -->
+<header class="header"></header>
+<section class="slide-body">
+	<div class="slide"></div>
+	<div class="slide"></div>
+	<div class="slide"></div>
 </section>
-<section class="pageWrapper">
-<!-- Insert Regular Content Here -->
-</section>
+<footer class="footer"></footer>
 ```
 
 ```
