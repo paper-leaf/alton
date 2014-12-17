@@ -59,11 +59,11 @@ First ensure you have the proper HTML structure:
 ```
 #!html
 
-<section class="header" style="background: grey;">
-
+<section class="header">
+// Insert Content Here
 </section>
-<section class="pageWrapper" style="background: yellow;height: 3000px;">
-
+<section class="pageWrapper">
+// Insert Content Here
 </section>
 ```
 
