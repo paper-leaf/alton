@@ -47,7 +47,33 @@ $(document).scrollJack({
 ```
 
 ### Featured Scroll. ###
-The Idea behind featured scroll is that you have a header and footer section with a featured area of projects or something in the middle. 
+The Idea behind featured scroll is that you have a header and footer section with a featured area of projects or something in the middle.
+
+Here is an example for all the options available for featuredScroll:
+
+First ensure you have the proper HTML structure:
+
+```
+#!html
+
+<section class="header">
+<!-- Insert Header Content Here -->
+</section>
+<section class="pageWrapper">
+<!-- Insert Regular Content Here -->
+</section>
+```
+
+```
+#!javascript
+
+$(document).scrollJack({
+    firstClass : 'header', // classname of the first element in your page content
+    bodyContainer: 'pageWrapper', // ID of content container
+    scrollMode: 'headerScroll', // Choose scroll mode
+    animationType: 'cubic-bezier(2.63, 2.64, 2, 2)', // Choose animation style
+});
+```
 
 ### Header Scroll ###
 The Idea behind header scroll is that you have a featured header area, that on scroll disappears, an you find yourself at the main content, with native scrolling enabled.
