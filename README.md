@@ -1,10 +1,10 @@
 # README #
 
 ## What is scrollJacking? ##
-Scroll Jacking is meant to provide options for those times when full page scroll doesn't make sense. We've added the option for having a header and footer area that you can scroll to, and also a featured-header single scroll.
+scrollJacking is meant to provide options for those times when full page scroll doesn't make sense. We've added the option for having a header and footer area that you can scroll to, and also a featured-header single scroll.
 
 ## Quick start ##
-### Featured Scroll. ###
+### Featured Scroll ###
 The Idea behind featured scroll is that you have a header and footer section with a featured area of projects or something in the middle.
 
 Here is an example for all the options available for featuredScroll:
