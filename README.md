@@ -3,6 +3,9 @@
 ## What is scrollJacking? ##
 scrollJacking is meant to provide options for those times when full page scroll doesn't make sense. We've added the option for having a header and footer area that you can scroll to, and also a featured-header single scroll.
 
+## Compatibility ##
+This plugin has been tested on IE8+. With jQuery 1.7+. Anything less and you're on your own.
+
 ## Quick start ##
 ### Featured Scroll ###
 The Idea behind featured scroll is that you have a header and footer section with a featured area of projects or something in the middle.
