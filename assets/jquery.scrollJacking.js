@@ -41,7 +41,7 @@
      * 12. Header Scroll
      * 
      * =============================================================================== */
-     
+
     /* =============================================================================
      * Default Options
      * -------------------
@@ -60,7 +60,7 @@
             useSlideNumbers: false, // Enable or disable slider
             slideNumbersBorderColor: '#fff',
             slideNumbersColor: '#000',
-            animationType: 'slow',
+            animationType: 'slow'
         };
 
     $.fn.scrollJack = function (options) {
@@ -69,35 +69,32 @@
          * -------------------
          * Update the default settings with user selected options
          * ============================================================================= */
-        var settings = $.extend(true, {}, defaults, options);
+        var settings = $.extend(true, {}, defaults, options),
 
             /* =============================================================================
              * Global Variables
              * -------------------
              * Setting up variables that will be used throught the plugin
              * ============================================================================= */
-            var singleSlideClass = $('.' + settings.fullSlideClass + ' ' + settings.nextElement).attr('class'),
-                singleSlide = document.getElementsByClassName(singleSlideClass),
-                bodyScroll,
-                scrolling,
-                down = false,
-                up = false,
-                current = $('.' + settings.firstClass), // current element is the topmost element
-                next = $('.' + singleSlideClass + ':first'),
-                previous = null,
-                last = $('.' + settings.lastClass),
-                projectCount = $('.' + settings.fullSlideClass).children().length,
-                slideNumbers,
-                timeout,
-                top = true,
-                upCount = 0,
-                downCount = 0,
-                windowHeight = $(window).height(),
-                animating = false,
-                docElem = window.document.documentElement,
-                scrollOffset,
-                disableTimeout,
-                i;
+            singleSlideClass = $('.' + settings.fullSlideClass + ' ' + settings.nextElement).attr('class'),
+            singleSlide = document.getElementsByClassName(singleSlideClass),
+            bodyScroll,
+            down = false,
+            up = false,
+            current = $('.' + settings.firstClass), // current element is the topmost element
+            next = $('.' + singleSlideClass + ':first'),
+            previous = null,
+            last = $('.' + settings.lastClass),
+            projectCount = $('.' + settings.fullSlideClass).children().length,
+            slideNumbers,
+            top = true,
+            upCount = 0,
+            downCount = 0,
+            windowHeight = $(window).height(),
+            animating = false,
+            docElem = window.document.documentElement,
+            scrollOffset,
+            i;
 
         /* =============================================================================
          * Position Variables
@@ -292,7 +289,7 @@
          * -------------------
          * All the code to move the page down
          * ============================================================================ */
-        $.fn.moveDown = function (event) {
+        $.fn.moveDown = function () {
             scrollOffset = scrollY();
             if (scrollOffset >= 0 && (scrollOffset <= $(current).scrollTop()) && top === true) {
                 // Check if top of page
@@ -346,7 +343,7 @@
          * -------------------
          * All the code to move the page up
          * ============================================================================ */
-        $.fn.moveUp = function (event) {
+        $.fn.moveUp = function () {
             scrollOffset = scrollY();
             if ($('.' + settings.fullSlideClass).offset().top + 1 > scrollOffset && previous && scrollOffset > 0) {
                 // Check if not scrolling to top of page
@@ -415,6 +412,11 @@
             }
         };
 
+         /* ============================================================================
+         * ScrollY
+         * -------------------
+         * Replacing default scrollY with IE8 Compat
+         * ============================================================================ */
         function scrollY() {
             return window.pageYOffset || docElem.scrollTop;
         }
@@ -425,20 +427,22 @@
          * Scroll based on the idea of having a header, a full screen featured projects
          * area, and then a footer after
          * ============================================================================ */
-        function featuredScroll(event) {
+        function featuredScroll(e) {
             bodyScroll = $('body,html').is(':animated') || $('body').is(':animated') || $('html').is(':animated'); // Check if body is currently animated
 
-            clearTimeout($.data(this, 'scrollTimer'));
-            $.data(this, 'scrollTimer', setTimeout(function() {
-                animating = false;
-            }, 50));
+            if (!bodyScroll) {
+                clearTimeout($.data(this, 'scrollTimer'));
+                $.data(this, 'scrollTimer', setTimeout(function() {
+                    animating = false;
+                }, 50));
+            }
 
-            if (event.originalEvent.detail/3 >= 1 && !animating || event.originalEvent.wheelDelta / 3 <= -1 && !animating) {
+            if (e.originalEvent.detail/3 >= 1 && !animating || e.originalEvent.wheelDelta / 3 <= -1 && !animating) {
                 // Check if scrolling down
                 downCount += 1;
                 $(document).moveDown();
                 animating = true;
-            } else if (event.originalEvent.detail / 3 <= -1 && !animating || event.originalEvent.wheelDelta / 3 >= 1 && !animating) {
+            } else if (e.originalEvent.detail / 3 <= -1 && !animating || e.originalEvent.wheelDelta / 3 >= 1 && !animating) {
                 // Check if not scrolling up
                 upCount += 1;
                 $(document).moveUp();
@@ -453,34 +457,33 @@
          * Scroll jacking for full size header image, then re-enables native scrolling
          * 
          * ============================================================================ */
-        function headerScroll(event) {
+        function headerScroll(e) {
             scrollOffset = scrollY();
-          if (event.originalEvent.detail > 0 || event.originalEvent.wheelDelta < 0) {
-            if ($(next).offset().top > 0 && scrollOffset < $('.'+settings.firstClass).height()){
-              if ($('.'+settings.firstClass).hasClass('active')) {
-                $('.'+settings.firstClass).toggleClass('active');
-                $(document).scrollTo(next);
-                previous = current;
-                current = next;
-                return stopDefaultAnimate(event);
-              } else if (!$('html, body').is(':animated')){
-                return true;
-              }
-          }
-          else {
-            return true;
-          }
-        } else {
-          if (!$('.'+settings.firstClass).hasClass('active') && $(window).scrollTop() <= $('.'+settings.firstClass).height() ) {
-              $('.'+settings.firstClass).toggleClass('active');
-              $(document).scrollTo(previous);
-              next = current;
-              current = previous;
-            } else if (!$('html, body').is(':animated')){
-              return true;
+            if (e.originalEvent.detail > 0 || e.originalEvent.wheelDelta < 0) {
+                if ($(next).offset().top > 0 && scrollOffset < $('.' + settings.firstClass).height()) {
+                    if ($('.'+settings.firstClass).hasClass('active')) {
+                        $('.'+settings.firstClass).toggleClass('active');
+                        $(document).scrollTo(next);
+                        previous = current;
+                        current = next;
+                        return stopDefaultAnimate(e);
+                    } else if (!$('html, body').is(':animated')){
+                        return true;
+                    }
+                } else {
+                    return true;
+                }
+            } else {
+              if (!$('.'+settings.firstClass).hasClass('active') && $(window).scrollTop() <= $('.'+settings.firstClass).height() ) {
+                    $('.'+settings.firstClass).toggleClass('active');
+                    $(document).scrollTo(previous);
+                    next = current;
+                    current = previous;
+                } else if (!$('html, body').is(':animated')){
+                    return true;
+                }
             }
-          }
-          return false;
+            return false;
         }
 
 
@@ -500,19 +503,19 @@
                 });
 
                  // Key Up Key Down etc
-                $(document).keydown(function (event) {
-                    switch (event.which) {
+                $(document).keydown(function (e) {
+                    switch (e.which) {
                     case 40: // arrowUp
-                        $(document).moveDown(event);
+                        $(document).moveDown(e);
                         break;
                     case 33: // pageUp 
-                        $(document).moveDown(event);
+                        $(document).moveDown(e);
                         break;
                     case 34: // pageDown
-                        $(document).moveUp(event);
+                        $(document).moveUp(e);
                         break;
                     case 38: // arrowDown
-                        $(document).moveUp(event);
+                        $(document).moveUp(e);
                         break;
                     case 50: // home
                         $(document).scrollTo('.' + settings.firstClass);
@@ -523,10 +526,12 @@
                     }
                 });
             }
-            if (!is_mobile() && settings.scrollMode === 'featuredScroll') {
-                $(document).on({'DOMMouseScroll mousewheel' : featuredScroll });
-            } else if (!is_mobile() && settings.scrollMode === 'headerScroll') {
-                $(document).on({'DOMMouseScroll mousewheel' : headerScroll });
+            if (!is_mobile()) {
+                 if (settings.scrollMode === 'featuredScroll') {
+                    $(document).on({'DOMMouseScroll mousewheel' : featuredScroll });
+                } else if (settings.scrollMode === 'headerScroll') {
+                    $(document).on({'DOMMouseScroll mousewheel' : headerScroll });
+                }
             }
         });
     };
