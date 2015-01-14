@@ -424,7 +424,6 @@
             if (event.originalEvent.wheelDelta/3 >= 1 && scrolling !== true || event.originalEvent.wheelDelta/3 <= -1 && scrolling !== true || event.originalEvent.detail/3 >= 1 && scrolling !== true || event.originalEvent.detail/3 <= 1 && scrolling !== true) {
                 scrolling = true; // Check scroll down etc.
                 clearTimeout(timeout); // Clear any existing timeout interval
-
                 // Enable scrolling after a time period
                 timeout = setTimeout(function () {
                     scrolling = false;
