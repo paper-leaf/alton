@@ -82,6 +82,7 @@ Follow [@paper_leaf](https://twitter.com/paper_leaf) on Twitter.
 
 ## Copyright and License ##
 *Copyright 2014 Paper Leaf Design*
+
 License: GPL v3
 
 ## Frequently Asked Questions ##
