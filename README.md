@@ -101,7 +101,6 @@ $(document).scrollJack({
     firstClass : 'header', // classname of the first element in your page content
     bodyContainer: 'pageWrapper', // ID of content container
     scrollMode: 'headerScroll', // Choose scroll mode
-    animationType: 'cubic-bezier(2.63, 2.64, 2, 2)', // Choose animation style
 });
 ```
 
