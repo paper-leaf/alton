@@ -42,7 +42,6 @@ $(document).scrollJack({
     useSlideNumbers: false, // Enable or disable slider pagination
     slideNumbersBorderColor: '#fff', // Choose pagination bullets border color
     slideNumbersColor: '#f8f8f8', // Choose pagination bullets fill color
-    animationType: 'cubic-bezier(2.63, 2.64, 2, 2)', // Choose animation style
 });
 ```
 
