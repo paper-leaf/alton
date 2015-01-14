@@ -107,11 +107,11 @@ $(document).scrollJack({
 ## Frequently Asked Questions ##
 ### Does this work on touchscreens? ###
 No
-### Why not? ###
+#### Why not? ####
 Touch events are a different beast, and considering the amount of people on cheaper, less powerful devices, or even the majority still stuck in contracts, the usability is usually non-existent. That being said, we are continuing to explore ways of implementing this for mobile devices.
-### So you are looking at adding mobile functionality? ###
+#### So you are looking at adding mobile functionality? ####
 Possibly
-### Scrolling appears unresponsive at times. What's going on? ###
+#### Scrolling appears unresponsive at times. What's going on? ####
 After every scroll there's a delay in effect to help get rid of Inertia Scroll on Macs. If you try to scroll within this delay it will prevent you from scrolling, until the barrage of mousewheel events has ended.
 
 ## Possibilities for the next versions ##
