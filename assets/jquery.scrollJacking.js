@@ -116,15 +116,43 @@
                 for (i = singleSlide.length - 1; i >= 0; i -= 1) {
                     $(singleSlide[i]).css('height', windowHeight + 10);
                 }
-
                 if (settings.useSlideNumbers) {
                     // Create Slider Buttons
-                    $('.' + settings.bodyContainer).append('<div style="height: 100%;position: fixed;top: 0;right: 0px;bottom: 0px;width: 86px;z-index: 999;" id="' + settings.slideNumbersContainer + '"></div>');
-                    $('.' + settings.bodyContainer + ' #' + settings.slideNumbersContainer).append('<ul style="transform: translateY(-50%);-moz-transform: translateY(-50%);-ms-transform: translateY(-50%);-o-transform: translateY(-50%);-webkit-transform: translateY(-50%);top: 50%;position: fixed;"></ul>');
+                    $('.' + settings.bodyContainer).append('<div id="' + settings.slideNumbersContainer + '"></div>');
+                    $('#' + settings.slideNumbersContainer).css({
+                        'height': '100%',
+                        'position': 'fixed',
+                        'top': 0,
+                        'right': '0px',
+                        'bottom': '0px',
+                        'width': '86px',
+                        'z-index': 999
+                    });
+                    $('.' + settings.bodyContainer + ' #' + settings.slideNumbersContainer).append('<ul></ul>');
+                    $('.' + settings.bodyContainer + ' #' + settings.slideNumbersContainer + ' ul').css({
+                        'transform': 'translateY(-50%)',
+                        '-moz-transform': 'translateY(-50%)',
+                        '-ms-transform': 'translateY(-50%)',
+                        '-o-transform': 'translateY(-50%)',
+                        '-webkit-transform': 'translateY(-50%)',
+                        'top': '50%',
+                        'position': 'fixed'
+                    });
+                    
                     var testCount = 0;
 
                     while (testCount < projectCount) {
-                        $('.' + settings.bodyContainer + ' #' + settings.slideNumbersContainer + ' ul').append('<li class="paginate" style="cursor:pointer;border-radius:50%;list-style: none;background: '+settings.slideNumbersBorderColor+';border:2px solid '+settings.slideNumbersBorderColor+';border-radius: 50%;height: 10px;width: 10px;margin: 5px 0;"></ul>');
+                        $('.' + settings.bodyContainer + ' #' + settings.slideNumbersContainer + ' ul').append('<li class="paginate"></ul>');
+                        $('.paginate').css({
+                            'cursor':'pointer',
+                            'border-radius':'50%',
+                            'list-style': 'none',
+                            'background': settings.slideNumbersBorderColor,
+                            'border':'2px solid' + settings.slideNumbersBorderColor,
+                            'height': '10px',
+                            'width': '10px',
+                            'margin': '5px 0'
+                        });
                         testCount += 1;
                     }
 
