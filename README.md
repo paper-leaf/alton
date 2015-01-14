@@ -105,3 +105,8 @@ $(document).scrollJack({
     animationType: 'cubic-bezier(2.63, 2.64, 2, 2)', // Choose animation style
 });
 ```
+
+## Frequently Asked Questions ##
+Does this work on Mobile? No
+Are you looking at adding mobile functionality? Possibly.
+The Scrolling appears unresponsive at times. What's going on? After every scroll there's a delay in effect to help get rid of Inertia Scroll on Macs. If you try to scroll within this delay it will prevent you from scrolling, until the barrage of mousewheel events has ended.
