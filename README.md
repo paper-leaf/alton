@@ -81,7 +81,7 @@ Have a bug or a feature request? Please first read the issue guidelines and sear
 
 ## Keep track of development and community news. ##
 
-Follow @paperleaf on Twitter.
+Follow [@paper_leaf](https://twitter.com/paper_leaf) on Twitter.
 
 ## Copyright and license ##
 ## Code and documentation ## 
