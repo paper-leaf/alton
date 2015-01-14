@@ -11,7 +11,7 @@
 
 **Copyright 2014 Paper Leaf Design**
 
-Quick start
+## Quick start ##
 ### Featured Scroll. ###
 The Idea behind featured scroll is that you have a header and footer section with a featured area of projects or something in the middle.
 
