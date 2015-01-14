@@ -456,8 +456,9 @@
          * 
          * ============================================================================ */
         function headerScroll(event) {
+            scrollOffset = scrollY();
           if (event.originalEvent.detail > 0 || event.originalEvent.wheelDelta < 0) {
-            if ($(next).offset().top > 0 && $(window).scrollTop() < $('.'+settings.firstClass).height()){
+            if ($(next).offset().top > 0 && scrollOffset < $('.'+settings.firstClass).height()){
               if ($('.'+settings.firstClass).hasClass('active')) {
                 $('.'+settings.firstClass).toggleClass('active');
                 $(document).scrollTo(next);
