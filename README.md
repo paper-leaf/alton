@@ -113,3 +113,7 @@ Touch events are a different beast, and considering the amount of people on chea
 Possibly
 ### Scrolling appears unresponsive at times. What's going on? ###
 After every scroll there's a delay in effect to help get rid of Inertia Scroll on Macs. If you try to scroll within this delay it will prevent you from scrolling, until the barrage of mousewheel events has ended.
+
+## Possibilities for the next versions ##
+Custom Animations
+More Customization for slide number indicators (pagination)
