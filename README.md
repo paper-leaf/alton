@@ -69,13 +69,15 @@ $(document).scrollJack({
 
 Have a bug or a feature request? Please first read the issue guidelines and search for existing and closed issues. If your problem or idea is not addressed yet, please open a new issue.
 
-## Documentation ##
+### Currently Working On ###
+* Custom Animations
+* More Customization for slide number indicators (pagination)
 
 ## Keep track of our progress. ##
 
 Follow [@paper_leaf](https://twitter.com/paper_leaf) on Twitter.
 
-## Copyright and license ##
+## Copyright and License ##
 Copyright 2014 Paper Leaf Design
 License: GPL v3
 
@@ -88,7 +90,3 @@ Touch events are a different beast, and considering the amount of people on chea
 Possibly
 #### Scrolling appears unresponsive at times. What's going on? ####
 After every scroll there's a delay in effect to help get rid of Inertia Scroll on Macs. If you try to scroll within this delay it will prevent you from scrolling, until the barrage of mousewheel events has ended.
-
-## Possibilities for the next versions ##
-* Custom Animations
-* More Customization for slide number indicators (pagination)
