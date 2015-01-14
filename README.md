@@ -79,7 +79,7 @@ Have a bug or a feature request? Please first read the issue guidelines and sear
 
 ## Documentation ##
 
-## Keep track of development and community news. ##
+## Keep track of our progress. ##
 
 Follow [@paper_leaf](https://twitter.com/paper_leaf) on Twitter.
 
