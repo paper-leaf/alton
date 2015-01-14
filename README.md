@@ -107,9 +107,9 @@ $(document).scrollJack({
 ```
 
 ##Frequently Asked Questions ##
-###Does this work on touchscreens? ### 
+###Does this work on touchscreens?### 
 No
-###Does this work on touchscreens? ### 
+###Why Not?### 
 Touch events are a different beast, and considering the amount of people on cheaper, less powerful devices, or even the majority still stuck in contracts, the usability is usually non-existent. That being said, we are continuing to explore ways of implementing this for mobile devices.
 ###So you are looking at adding mobile functionality? ###
 Possibly
