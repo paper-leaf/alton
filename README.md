@@ -1,15 +1,4 @@
 # README #
-**Name:** featured-scroll.js
-
-**Version:** 1.0
-
-**Author:** Paper Leaf
-
-**Author Website:** http://www.paper-leaf.com
-
-**Description:** A full featured scrolling plugin for creating immersive featured sections or headers.
-
-**Copyright 2014 Paper Leaf Design**
 
 ## Quick start ##
 ### Featured Scroll. ###
