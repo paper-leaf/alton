@@ -81,52 +81,11 @@ Have a bug or a feature request? Please first read the issue guidelines and sear
 
 ## Keep track of development and community news. ##
 
-Follow @twbootstrap on Twitter.
-Read and subscribe to The Official Bootstrap Blog.
-Chat with fellow Bootstrappers in IRC. On the irc.freenode.net server, in the ##bootstrap channel.
-Implementation help may be found at Stack Overflow (tagged twitter-bootstrap-3).
-Versioning
+Follow @paperleaf on Twitter.
 
-For transparency into our release cycle and in striving to maintain backward compatibility, Bootstrap is maintained under the Semantic Versioning guidelines. Sometimes we screw up, but we'll adhere to those rules whenever possible.
-
-Creators
-
-Mark Otto
-
-https://twitter.com/mdo
-https://github.com/mdo
-Jacob Thornton
-
-https://twitter.com/fat
-https://github.com/fat
-Copyright and license
-
+## Copyright and license ##
 ## Code and documentation ## 
-copyright 2011-2015 Twitter, Inc. Code released under the MIT license. Docs released under Creative Commons.
-
-
-## Use Cases ##
-There is a couple of features that this plugin covers.
-
-To start things off here's every option that is available and it's default
-
-```
-#!javascript
-$(document).scrollJack({
-    firstClass : 'header', // classname of the first element in your page content
-    fullSlideClass : 'full', // full page elements container for 
-    nextElement : 'div', // set the first element in the first page series.
-    previousClass : null, // null when starting at the top. Will be updated based on current postion
-    lastClass: 'footer', // last block to scroll to
-    slideNumbersContainer: 'slide-numbers', // ID of Slide Numbers
-    bodyContainer: 'pageWrapper', // ID of content container
-    scrollMode: 'featuredScroll', // Choose scroll mode
-    useSlideNumbers: false, // Enable or disable slider pagination
-    slideNumbersBorderColor: '#fff', // Choose pagination bullets border color
-    slideNumbersColor: '#f8f8f8', // Choose pagination bullets fill color
-});
-```
-
+Copyright 2014 Paper Leaf Design
 
 
 ## Frequently Asked Questions ##
