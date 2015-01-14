@@ -106,7 +106,7 @@ $(document).scrollJack({
 });
 ```
 
-##Frequently Asked Questions ##
+##Frequently Asked Questions##
 ###Does this work on touchscreens?### 
 No
 ###Why Not?### 
