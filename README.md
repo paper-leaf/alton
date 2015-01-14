@@ -11,40 +11,7 @@
 
 **Copyright 2014 Paper Leaf Design**
 
-
-## Credit ##
-### is_mobile() Credit ###
-is_mobile() based off these helpful posts
-- http://stackoverflow.com/questions/3514784/what-is-the-best-way-to-detect-a-handheld-device-in-jquery
-### Scroll Event Stabilization ###
-Getting stable scroll events was helped hugely by Huge Inc's insights
-- http://www.hugeinc.com/ideas/perspective/scroll-jacking-on-hugeinc
-### Keyboard Events Stabilization ###
-Stabilizing keypress events was helped in large part by jQuery OnePage Scroll
-- https://github.com/peachananr/onepage-scroll
-
-## Use Cases ##
-There is a couple of features that this plugin covers.
-
-To start things off here's every option that is available and it's default
-
-```
-#!javascript
-$(document).scrollJack({
-    firstClass : 'header', // classname of the first element in your page content
-    fullSlideClass : 'full', // full page elements container for 
-    nextElement : 'div', // set the first element in the first page series.
-    previousClass : null, // null when starting at the top. Will be updated based on current postion
-    lastClass: 'footer', // last block to scroll to
-    slideNumbersContainer: 'slide-numbers', // ID of Slide Numbers
-    bodyContainer: 'pageWrapper', // ID of content container
-    scrollMode: 'featuredScroll', // Choose scroll mode
-    useSlideNumbers: false, // Enable or disable slider pagination
-    slideNumbersBorderColor: '#fff', // Choose pagination bullets border color
-    slideNumbersColor: '#f8f8f8', // Choose pagination bullets fill color
-});
-```
-
+Quick start
 ### Featured Scroll. ###
 The Idea behind featured scroll is that you have a header and footer section with a featured area of projects or something in the middle.
 
@@ -103,6 +70,64 @@ $(document).scrollJack({
     scrollMode: 'headerScroll', // Choose scroll mode
 });
 ```
+
+## What's included ##
+
+## Bugs and feature requests ##
+
+Have a bug or a feature request? Please first read the issue guidelines and search for existing and closed issues. If your problem or idea is not addressed yet, please open a new issue.
+
+## Documentation ##
+
+## Keep track of development and community news. ##
+
+Follow @twbootstrap on Twitter.
+Read and subscribe to The Official Bootstrap Blog.
+Chat with fellow Bootstrappers in IRC. On the irc.freenode.net server, in the ##bootstrap channel.
+Implementation help may be found at Stack Overflow (tagged twitter-bootstrap-3).
+Versioning
+
+For transparency into our release cycle and in striving to maintain backward compatibility, Bootstrap is maintained under the Semantic Versioning guidelines. Sometimes we screw up, but we'll adhere to those rules whenever possible.
+
+Creators
+
+Mark Otto
+
+https://twitter.com/mdo
+https://github.com/mdo
+Jacob Thornton
+
+https://twitter.com/fat
+https://github.com/fat
+Copyright and license
+
+## Code and documentation ## 
+copyright 2011-2015 Twitter, Inc. Code released under the MIT license. Docs released under Creative Commons.
+
+
+## Use Cases ##
+There is a couple of features that this plugin covers.
+
+To start things off here's every option that is available and it's default
+
+```
+#!javascript
+$(document).scrollJack({
+    firstClass : 'header', // classname of the first element in your page content
+    fullSlideClass : 'full', // full page elements container for 
+    nextElement : 'div', // set the first element in the first page series.
+    previousClass : null, // null when starting at the top. Will be updated based on current postion
+    lastClass: 'footer', // last block to scroll to
+    slideNumbersContainer: 'slide-numbers', // ID of Slide Numbers
+    bodyContainer: 'pageWrapper', // ID of content container
+    scrollMode: 'featuredScroll', // Choose scroll mode
+    useSlideNumbers: false, // Enable or disable slider pagination
+    slideNumbersBorderColor: '#fff', // Choose pagination bullets border color
+    slideNumbersColor: '#f8f8f8', // Choose pagination bullets fill color
+});
+```
+
+
 
 ## Frequently Asked Questions ##
 #### Does this work on touchscreens? ####
