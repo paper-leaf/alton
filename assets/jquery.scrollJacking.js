@@ -92,8 +92,11 @@
                 top = true,
                 upCount = 0,
                 downCount = 0,
-                windowTop = $(window).scrollTop(),
                 windowHeight = $(window).height(),
+                animating = false,
+                docElem = window.document.documentElement,
+                scrollOffset,
+                disableTimeout,
                 i;
 
         /* =============================================================================
@@ -271,10 +274,19 @@
          * -------------------
          * Stops default scroll animations when called
          * ============================================================================ */
+
+        var keys = [37, 38, 39, 40];
+
+        function preventDefault(e) {
+          e = e || window.event;
+          if (e.preventDefault) {
+                e.stopPropagation();
+                e.returnValue = false;
+            }
+        }
+
         function stopDefaultAnimate(event) {
-            event.preventDefault(event);
-            event.stopPropagation();
-            return false;
+            return preventDefault(event);
         }
 
         /* ============================================================================
@@ -283,7 +295,8 @@
          * All the code to move the page down
          * ============================================================================ */
         $.fn.moveDown = function (event) {
-            if ($(window).scrollTop() >= 0 && ($(window).scrollTop() <= $(current).scrollTop()) && top === true) {
+            scrollOffset = scrollY();
+            if (scrollOffset >= 0 && (scrollOffset <= $(current).scrollTop()) && top === true) {
                 // Check if top of page
                 // Update the selectors
                 previous = current;
@@ -299,8 +312,7 @@
                 // Update top variable
                 top = false;
                 $(document).scrollTo(current); // Scroll to selected element
-                return stopDefaultAnimate(event); // Prevent default animation for scrolls
-            } else if (!bodyScroll && next && $(current).offset().top < $(window).scrollTop() + 1) {
+            } else if (!bodyScroll && next && $(current).offset().top < scrollOffset + 1) {
                 // Check if slide
                 if (next.hasClass(singleSlideClass)) {
                     // Update the selectors
@@ -313,7 +325,6 @@
                         slideIndex(current, false);
                     }
                     $(document).scrollTo(current); // Scroll to selected element
-                    return stopDefaultAnimate(event); // Prevent default animation for scrolls
                 } else {
                     // Update the selectors
                     previous = $('.' + singleSlideClass + ':last');
@@ -328,9 +339,7 @@
                         }
                     }
                     $(document).scrollTo(current); // Scroll to selected element
-                    return stopDefaultAnimate(event); // Prevent default animation for scrolls
                 }
-                return stopDefaultAnimate(event); // Prevent default animation for scrolls
             }
         };
 
@@ -340,9 +349,10 @@
          * All the code to move the page up
          * ============================================================================ */
         $.fn.moveUp = function (event) {
-            if ($('.' + settings.fullSlideClass).offset().top + 1 > $(window).scrollTop() && previous && $(window).scrollTop() > 0) {
+            scrollOffset = scrollY();
+            if ($('.' + settings.fullSlideClass).offset().top + 1 > scrollOffset && previous && scrollOffset > 0) {
                 // Check if not scrolling to top of page
-                if ($(current).offset().top >= $(window).scrollTop()) {
+                if ($(current).offset().top >= scrollOffset) {
                     // Update the selectors
                     current = $('.' + settings.firstClass);
                     previous = null;
@@ -367,10 +377,8 @@
                         slideIndex(previous, true);
                     }
                 }
-                
                 $(document).scrollTo(current); // Scroll to proper element
-                return stopDefaultAnimate(event); // Prevent default animation for scrolls
-            } else if (!bodyScroll && $('.' + settings.fullSlideClass).offset().top < $(window).scrollTop()) {
+            } else if (!bodyScroll && $('.' + settings.fullSlideClass).offset().top < scrollOffset) {
                 // Update the selectors
                 current = previous;
                 previous = $(current).prev();
@@ -387,7 +395,6 @@
                 $(document).scrollTo(current);
 
                 // Stop default scrolling
-                return stopDefaultAnimate(event); // Prevent default animation for scrolls
             }
 
             // Update movement variables
@@ -395,7 +402,6 @@
             down = false;
 
             // Stop default scrolling animations
-            return stopDefaultAnimate(event); // Prevent default animation for scrolls
         };
 
         /* ============================================================================
@@ -411,6 +417,10 @@
             }
         };
 
+        function scrollY() {
+            return window.pageYOffset || docElem.scrollTop;
+        }
+
         /* ============================================================================
          * Featured Scroll
          * -------------------
@@ -418,34 +428,25 @@
          * area, and then a footer after
          * ============================================================================ */
         function featuredScroll(event) {
-            bodyScroll = $('body,html').is(':animated'); // Check if body is currently animated
-            down = false; // Initiate down movement variable
-            up = false; // Initiate up movement variable
-            if (event.originalEvent.wheelDelta/3 >= 1 && scrolling !== true || event.originalEvent.wheelDelta/3 <= -1 && scrolling !== true || event.originalEvent.detail/3 >= 1 && scrolling !== true || event.originalEvent.detail/3 <= 1 && scrolling !== true) {
-                scrolling = true; // Check scroll down etc.
-                clearTimeout(timeout); // Clear any existing timeout interval
-                // Enable scrolling after a time period
-                timeout = setTimeout(function () {
-                    scrolling = false;
-                    down = false;
-                    up = false;
-                    downCount = 0;
-                    upCount = 0;
-                }, 1500);
-                $("html, body").off('DOMMouseScroll', false);
-                $("html, body").off('mousewheel', false);
-            }
+            bodyScroll = $('body,html').is(':animated') || $('body').is(':animated') || $('html').is(':animated'); // Check if body is currently animated
 
-            if (event.originalEvent.detail/3 >= 1 && !down && downCount < 1 || event.originalEvent.wheelDelta / 3 <= -1 && !down && downCount < 1) {
+            clearTimeout($.data(this, 'scrollTimer'));
+            $.data(this, 'scrollTimer', setTimeout(function() {
+                animating = false;
+            }, 50));
+
+            if (event.originalEvent.detail/3 >= 1 && !animating || event.originalEvent.wheelDelta / 3 <= -1 && !animating) {
                 // Check if scrolling down
                 downCount += 1;
-                $(document).moveDown(event);
-            } else if (event.originalEvent.detail / 3 <= -1 && !up && upCount < 1 || event.originalEvent.wheelDelta / 3 >= 1 && !up && upCount < 1) {
+                $(document).moveDown();
+                animating = true;
+            } else if (event.originalEvent.detail / 3 <= -1 && !animating || event.originalEvent.wheelDelta / 3 >= 1 && !animating) {
                 // Check if not scrolling up
                 upCount += 1;
-                $(document).moveUp(event);
+                $(document).moveUp();
+                animating = true;
             }
-            return stopDefaultAnimate(event);
+            return false;
         }
 
         /* ============================================================================
