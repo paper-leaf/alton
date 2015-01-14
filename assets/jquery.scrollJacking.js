@@ -275,8 +275,6 @@
          * Stops default scroll animations when called
          * ============================================================================ */
 
-        var keys = [37, 38, 39, 40];
-
         function preventDefault(e) {
           e = e || window.event;
           if (e.preventDefault) {
