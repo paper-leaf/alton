@@ -97,6 +97,16 @@
             scrollOffset,
             i;
 
+
+        if ($('.' + settings.firstClass).length > 0) {
+            current = $('.' + settings.firstClass); // current element is the topmost element
+        } else {
+            previous = null;
+            current = next;
+            next = current.next();
+            last = $('.' + singleSlideClass + ':last');
+        }
+
         /* =============================================================================
          * Position Variables
          * -------------------
@@ -115,7 +125,7 @@
         function initiateLayout(style) {
             if (style === 'featuredScroll') {
                 for (i = singleSlide.length - 1; i >= 0; i -= 1) {
-                    $(singleSlide[i]).css('height', windowHeight + 10);
+                    $(singleSlide[i]).outerHeight(windowHeight);
                 }
                 if (settings.useSlideNumbers) {
                     // Create Slider Buttons
@@ -347,7 +357,7 @@
          * ============================================================================ */
         $.fn.moveUp = function () {
             scrollOffset = scrollY();
-            if ($('.' + settings.fullSlideClass).offset().top + 1 > scrollOffset && previous && scrollOffset > 0) {
+            if ($('.' + settings.fullSlideContainer).scrollTop() + 1 > scrollOffset && previous && scrollOffset > 0) {
                 // Check if not scrolling to top of page
                 if ($(current).offset().top >= scrollOffset) {
                     // Update the selectors
@@ -375,7 +385,7 @@
                     }
                 }
                 $(document).scrollTo(current); // Scroll to proper element
-            } else if (!bodyScroll && $('.' + settings.fullSlideClass).offset().top < scrollOffset) {
+            } else if (!bodyScroll && $('.' + settings.fullSlideContainer).scrollTop() < scrollOffset) {
                 // Update the selectors
                 current = previous;
                 previous = $(current).prev();
