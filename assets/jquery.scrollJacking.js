@@ -78,7 +78,7 @@
              * Setting up variables that will be used throught the plugin
              * ============================================================================= */
             singleSlideClass = settings.singleSlideClass,
-            singleSlide = document.getElementsByClassName(singleSlideClass),
+            singleSlide,
             bodyScroll,
             down = false,
             up = false,
@@ -96,6 +96,13 @@
             docElem = window.document.documentElement,
             scrollOffset,
             i;
+
+        // IE8 Support for getElementsByClassname
+        if ('getElementsByClassName' in document) {
+            singleSlide = document.getElementsByClassName(singleSlideClass);
+        } else {
+            singleSlide = document.querySelectorAll('.' + singleSlideClass);
+        }
 
         if ($('.' + settings.firstClass).length > 0) {
             current = $('.' + settings.firstClass); // current element is the topmost element
@@ -167,7 +174,12 @@
                         testCount += 1;
                     }
                     // Store the slidenumbers
-                    slideNumbers =  document.getElementsByClassName('paginate');
+                    // IE8 Support for getElementsByClassname
+                    if (('getElementsByClassName' in document)) {
+                        slideNumbers =  document.getElementsByClassName('paginate');
+                    } else {
+                        slideNumbers =  document.querySelectorAll('.paginate');
+                    }
                 }
             } else {
                 $('.'+settings.firstClass).css('height', windowHeight + 10);
@@ -267,7 +279,6 @@
                 });
                 slideIndex(current, false);
             } else {
-                console.log(last == $('.' + singleSlideClass + ':last-child')[0]);
                 if (last != $('.' + singleSlideClass + ':last-child')[0]) {
                     slideNumbersFade(false);
                 } else {
@@ -361,7 +372,7 @@
          * ============================================================================ */
         $.fn.moveUp = function () {
             scrollOffset = scrollY();
-            if ($('.' + settings.fullSlideContainer).scrollTop() + 1 > scrollOffset && previous && scrollOffset > 0) {
+            if ($('.' + settings.fullSlideContainer).offset().top + 1 > scrollOffset && previous && scrollOffset > 0) {
                 // Check if not scrolling to top of page
                 if ($(current).offset().top >= scrollOffset) {
                     // Update the selectors
@@ -389,7 +400,7 @@
                     }
                 }
                 $(document).scrollTo(current); // Scroll to proper element
-            } else if (!bodyScroll && $('.' + settings.fullSlideContainer).scrollTop() < scrollOffset) {
+            } else if (!bodyScroll && $('.' + settings.fullSlideContainer).offset().top < scrollOffset) {
                 // Update the selectors
                 current = previous;
                 previous = $(current).prev();
@@ -495,9 +506,9 @@
                     $(document).scrollTo(previous);
                     next = current;
                     current = previous;
-                } else if (!$('html, body').is(':animated')){
+                } else if (!$('html, body').is(':animated')) {
                     return true;
-                }
+                } 
             }
             return false;
         }
