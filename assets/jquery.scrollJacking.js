@@ -97,14 +97,13 @@
             scrollOffset,
             i;
 
-
         if ($('.' + settings.firstClass).length > 0) {
             current = $('.' + settings.firstClass); // current element is the topmost element
         } else {
             previous = null;
             current = next;
             next = current.next();
-            last = $('.' + singleSlideClass + ':last');
+            last = $('.' + singleSlideClass + ':last-child')[0];
         }
 
         /* =============================================================================
@@ -125,6 +124,7 @@
         function initiateLayout(style) {
             if (style === 'featuredScroll') {
                 for (i = singleSlide.length - 1; i >= 0; i -= 1) {
+                    $(singleSlide[i]).css('height', windowHeight);
                     $(singleSlide[i]).outerHeight(windowHeight);
                 }
                 if (settings.useSlideNumbers) {
@@ -166,7 +166,6 @@
                         });
                         testCount += 1;
                     }
-
                     // Store the slidenumbers
                     slideNumbers =  document.getElementsByClassName('paginate');
                 }
@@ -193,16 +192,12 @@
          * Updates pagination on scroll down or up when called etc.
          * ============================================================================ */
         function slideIndex(element, toggle) {
-            if (toggle) {
-                if ($(slideNumbers[$(element).parent().children().index(element)]).hasClass('active')) {
-                    $(slideNumbers[$(element).parent().children().index(element)]).toggleClass('active');
-                    $(slideNumbers[$(element).parent().children().index(element)]).css('background', settings.slideNumbersBorderColor);
-                }
+            if (toggle && $(slideNumbers[$(element).parent().children().index(element)]).hasClass('active')) {
+                $(slideNumbers[$(element).parent().children().index(element)]).toggleClass('active');
+                $(slideNumbers[$(element).parent().children().index(element)]).css('background', settings.slideNumbersBorderColor);
             } else {
-                if (!$(slideNumbers[$(element).parent().children().index(element)]).hasClass('active')) {
-                    $(slideNumbers[$(element).parent().children().index(element)]).toggleClass('active');
-                    $(slideNumbers[$(element).parent().children().index(element)]).css('background', settings.slideNumbersColor);
-                }
+                $(slideNumbers[$(element).parent().children().index(element)]).toggleClass('active');
+                $(slideNumbers[$(element).parent().children().index(element)]).css('background', settings.slideNumbersColor);
             }
         }
 
@@ -272,7 +267,13 @@
                 });
                 slideIndex(current, false);
             } else {
-                slideNumbersFade(false);
+                console.log(last == $('.' + singleSlideClass + ':last-child')[0]);
+                if (last != $('.' + singleSlideClass + ':last-child')[0]) {
+                    slideNumbersFade(false);
+                } else {
+                    slideNumbersFade(true);
+                    slideIndex(current, false);
+                }
                 $(document).scrollTo(current);
             }
         }
@@ -282,10 +283,9 @@
          * -------------------
          * Stops default scroll animations when called
          * ============================================================================ */
-
         function preventDefault(e) {
-          e = e || window.event;
-          if (e.preventDefault) {
+            e = e || window.event;
+            if (e.preventDefault) {
                 e.stopPropagation();
                 e.returnValue = false;
             }
@@ -311,8 +311,13 @@
 
                 // Set Slide Indexes and Fade Slide Numbers
                 if (settings.useSlideNumbers) {
-                    slideIndex(current, false);
-                    slideNumbersFade(true);
+                    if (last == $('.' + singleSlideClass + ':last-child')[0]) {
+                        slideIndex(previous, true);
+                        slideIndex(current, false);
+                    } else {
+                        slideIndex(current, false);
+                        slideNumbersFade(true);
+                    }
                 }
 
                 // Update top variable
@@ -331,10 +336,9 @@
                         slideIndex(current, false);
                     }
                     $(document).scrollTo(current); // Scroll to selected element
-                } else if (last != $('.' + singleSlideClass + ':last')) {
+                } else if (last != $('.' + singleSlideClass + ':last-child')[0]) {
                     // Update the selectors
-                    console.log(last != $('.' + singleSlideClass + ':last'));
-                    previous = $('.' + singleSlideClass + ':last');
+                    previous = $('.' + singleSlideClass + ':last-child')[0];
                     current = last;
                     next = null;
                     if ($(window).scrollTop() + windowHeight + 10  >= $(document).height() - $(last).height()) {
