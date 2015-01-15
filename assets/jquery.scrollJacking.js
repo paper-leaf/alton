@@ -513,7 +513,6 @@
             return false;
         }
 
-
         /* ============================================================================
          * Function Calls and Ordering
          * -------------------
@@ -560,6 +559,10 @@
                     $(document).on({'DOMMouseScroll mousewheel' : headerScroll });
                 }
             }
+            $(window).resize(function() {
+                $(singleSlide[i]).css('height', $(window).height());
+                $(singleSlide[i]).outerHeight( $(window).height());
+            });
         });
     };
 })(jQuery);
