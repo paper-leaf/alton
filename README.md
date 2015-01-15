@@ -1,51 +1,13 @@
 # README #
-**Name:** featured-scroll.js
 
-**Version:** 1.0
+## What is scrollJacking? ##
+scrollJacking is meant to provide options for those times when full page scroll doesn't make sense. We've added the option for having a header and footer area that you can scroll to, and also a featured-header single scroll.
 
-**Author:** Paper Leaf
+## Compatibility ##
+This plugin has been tested on IE8+. With jQuery 1.7+. Anything less and you're on your own.
 
-**Author Website:** http://www.paper-leaf.com
-
-**Description:** A full featured scrolling plugin for creating immersive featured sections or headers.
-
-**Copyright 2014 Paper Leaf Design**
-
-
-## Credit ##
-### is_mobile() Credit ###
-is_mobile() based off these helpful posts
-- http://stackoverflow.com/questions/3514784/what-is-the-best-way-to-detect-a-handheld-device-in-jquery
-### Scroll Event Stabilization ###
-Getting stable scroll events was helped hugely by Huge Inc's insights
-- http://www.hugeinc.com/ideas/perspective/scroll-jacking-on-hugeinc
-### Keyboard Events Stabilization ###
-Stabilizing keypress events was helped in large part by jQuery OnePage Scroll
-- https://github.com/peachananr/onepage-scroll
-
-## Use Cases ##
-There is a couple of features that this plugin covers.
-
-To start things off here's every option that is available and it's default
-
-```
-#!javascript
-$(document).scrollJack({
-    firstClass : 'header', // classname of the first element in your page content
-    fullSlideClass : 'full', // full page elements container for 
-    nextElement : 'div', // set the first element in the first page series.
-    previousClass : null, // null when starting at the top. Will be updated based on current postion
-    lastClass: 'footer', // last block to scroll to
-    slideNumbersContainer: 'slide-numbers', // ID of Slide Numbers
-    bodyContainer: 'pageWrapper', // ID of content container
-    scrollMode: 'featuredScroll', // Choose scroll mode
-    useSlideNumbers: false, // Enable or disable slider pagination
-    slideNumbersBorderColor: '#fff', // Choose pagination bullets border color
-    slideNumbersColor: '#f8f8f8', // Choose pagination bullets fill color
-});
-```
-
-### Featured Scroll. ###
+## Quick start ##
+### Featured Scroll ###
 The Idea behind featured scroll is that you have a header and footer section with a featured area of projects or something in the middle.
 
 Here is an example for all the options available for featuredScroll:
@@ -104,16 +66,31 @@ $(document).scrollJack({
 });
 ```
 
-## Frequently Asked Questions ##
-### Does this work on touchscreens? ### 
-No
-### Why not? ### 
-Touch events are a different beast, and considering the amount of people on cheaper, less powerful devices, or even the majority still stuck in contracts, the usability is usually non-existent. That being said, we are continuing to explore ways of implementing this for mobile devices.
-### So you are looking at adding mobile functionality? ###
-Possibly
-### Scrolling appears unresponsive at times. What's going on? ###
-After every scroll there's a delay in effect to help get rid of Inertia Scroll on Macs. If you try to scroll within this delay it will prevent you from scrolling, until the barrage of mousewheel events has ended.
+## What's included ##
 
-## Possibilities for the next versions ##
-Custom Animations
-More Customization for slide number indicators (pagination)
+## Bugs and feature requests ##
+
+Have a bug or a feature request? Please first read the issue guidelines and search for existing and closed issues. If your problem or idea is not addressed yet, please open a new issue.
+
+### Currently Working On ###
+* Custom Animations
+* More Customization for slide number indicators (pagination)
+
+## Keep track of our progress. ##
+
+Follow [@paper_leaf](https://twitter.com/paper_leaf) on Twitter.
+
+## Copyright and License ##
+*Copyright 2014 Paper Leaf Design*
+
+License: GPL v3
+
+## Frequently Asked Questions ##
+#### Does this work on touchscreens? ####
+No
+#### Why not? ####
+Touch events are a different beast, and considering the amount of people on cheaper, less powerful devices, or even the majority still stuck in contracts, the usability is usually non-existent. That being said, we are continuing to explore ways of implementing this for mobile devices.
+#### So you are looking at adding mobile functionality? ####
+Possibly
+#### Scrolling appears unresponsive at times. What's going on? ####
+After every scroll there's a delay in effect to help get rid of Inertia Scroll on Macs. If you try to scroll within this delay it will prevent you from scrolling, until the barrage of mousewheel events has ended.
