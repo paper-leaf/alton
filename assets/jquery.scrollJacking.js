@@ -50,7 +50,8 @@
     "use strict";
     var defaults = {
             firstClass : 'header', // classname of the first element in your page content
-            fullSlideClass : 'full', // full page elements container for 
+            fullSlideContainer : 'full', // full page elements container for 
+            singleSlideClass : 'slide',
             nextElement : 'div', // set the first element in the first page series.
             previousClass : null, // null when starting at the top. Will be updated based on current postion
             lastClass: 'footer', // last block to scroll to
@@ -76,16 +77,16 @@
              * -------------------
              * Setting up variables that will be used throught the plugin
              * ============================================================================= */
-            singleSlideClass = $('.' + settings.fullSlideClass + ' ' + settings.nextElement).attr('class'),
+            singleSlideClass = settings.singleSlideClass,
             singleSlide = document.getElementsByClassName(singleSlideClass),
             bodyScroll,
             down = false,
             up = false,
-            current = $('.' + settings.firstClass), // current element is the topmost element
+            current,
             next = $('.' + singleSlideClass + ':first'),
             previous = null,
             last = $('.' + settings.lastClass),
-            projectCount = $('.' + settings.fullSlideClass).children().length,
+            projectCount = $('.' + settings.fullSlideContainer).children().length,
             slideNumbers,
             top = true,
             upCount = 0,
@@ -320,8 +321,9 @@
                         slideIndex(current, false);
                     }
                     $(document).scrollTo(current); // Scroll to selected element
-                } else {
+                } else if (last != $('.' + singleSlideClass + ':last')) {
                     // Update the selectors
+                    console.log(last != $('.' + singleSlideClass + ':last'));
                     previous = $('.' + singleSlideClass + ':last');
                     current = last;
                     next = null;
