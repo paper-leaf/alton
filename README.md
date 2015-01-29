@@ -1,13 +1,13 @@
 # README #
 
 ##What is Alton?##
-Alton is a JavaScript-powered scrolling plugin that utilizes custom vertical scrolling effects in order to present and navigate through web content in a unique manner. It utilizes the whole scrolljacking idea, but greatly improves upon the often-poorly-implemented scrolljacking experiences you might be used to.
+Alton is a jQuery-powered scrolling plugin that utilizes custom vertical scrolling effects in order to present and navigate through web content in a unique manner. It utilizes the whole scrolljacking idea, but greatly improves upon the often-poorly-implemented scrolljacking experiences you might be used to.
 
 ## What makes Alton unique? ##
 Good question. Here's why Alton rules:
 
 1. The **Bookend** functionality. This allows you to [NATE FILL THIS SHIT OUT] which is awesome because [NATE FILL THIS SHIT OUT]. [Here's a demo of Bookend.](#)
-2. The **Header Scroll** functionality. This allows you to scrolljack *only* the "Hero Section", wherein the page will scrolljack to the top of the section following the topmost Hero Section, then re-enable native scrolling for the rest of the page. [Here's a demo of Header Scroll.](#)
+2. The **Hero Scroll** functionality. This allows you to scrolljack *only* the "Hero Section", wherein the page will scrolljack to the top of the section that immediately follows the Hero Section, then re-enable native scrolling for the rest of the page. [Here's a demo of Hero Scroll.](#)
 3. The plugin uses **100% height** containers for full-screen presentation; it's great for impactful presentation.
 4. You have options for a **couple of different layouts** right out of the box.
 5. It's** lightweight, easy to implement,** and **not CPU intensive.**
@@ -17,6 +17,14 @@ Scrolljacking basically means we replace native scrolling (what you're used to) 
 
 ## Compatibility ##
 This plugin has been tested on IE8+ and with jQuery 1.7+. Anything less and you're on your own – sorry!
+
+## Demos ##
+
+In case you missed the links above, here are a few demos showing the different ways Alton can be used.
+
+[Demo 1 (Standard Implementation)](#)
+[Demo 2 (with Bookend functionality)](#)
+[Demo 3 (with Hero Scroll functionality)](#)
 
 ## Quick start ##
 ### Bookend Functionality ###
@@ -49,10 +57,10 @@ $(document).scrollJack({
 });
 ```
 
-### Header Scroll ###
-The Idea behind header scroll is that we only apply scrolljacking to the topmost "Hero" container; one scroll movement takes the user to the top of the next section of content and native scrolling is enabled. [Here's a demo of Header Scroll.](#)
+### Hero Scroll ###
+The Idea behind *Hero Scroll* is that we only apply scrolljacking to the topmost "Hero" container; one scroll movement takes the user to the top of the next section of content and native scrolling is enabled. [Here's a demo of Hero Scroll.](#)
 
-Here is an example for all the options available for headerScroll:
+Here is an example for all the options available for *Hero Scroll*:
 
 First ensure you have the proper HTML structure:
 
