@@ -12,18 +12,17 @@ Good question. Here's why Alton rules:
 4. You have options for a couple different layouts right out of the box.
 5. It's lightweight, easy to implement, and not CPU intensive.
 
-
-## What is scrollJacking? ##
-scrollJacking is meant to provide options for those times when full page scroll doesn't make sense. We've added the option for having a header and footer area that you can scroll to, and also a featured-header single scroll.
+## What is "ScrollJacking"? ##
+Scrolljacking is basically means we replace native scrolling (what you're used to) with targeted scrolling: when the user initiates a scroll, either with their mouse or keyboard, scrolljacking takes them to an exact vertical point on the screen (for example, the top of the next content container). 
 
 ## Compatibility ##
-This plugin has been tested on IE8+. With jQuery 1.7+. Anything less and you're on your own.
+This plugin has been tested on IE8+ and with jQuery 1.7+. Anything less and you're on your own – sorry!
 
 ## Quick start ##
-### Featured Scroll ###
-The Idea behind featured scroll is that you have a header and footer section with a featured area of projects or something in the middle.
+### Bookend Functionality ###
+The Idea behind *Bookend* functionality is that you have a header and footer sections ("bookends"), with a featured area of projects or something in the middle. The "featured area of projects" in the middle section are all 100% height, whereas the bookends can be whatever height you'd like them to be. [Here's a demo of Bookend.](#)
 
-Here is an example for all the options available for featuredScroll:
+Here is an example for all the options available for *Bookend*:
 
 First ensure you have the proper HTML structure:
 
@@ -51,7 +50,7 @@ $(document).scrollJack({
 ```
 
 ### Header Scroll ###
-The Idea behind header scroll is that you have a featured header area, that disappears on scroll, and you find yourself at the main content with native scrolling enabled.
+The Idea behind header scroll is that we only apply scrolljacking to the topmost "Hero" container; one scroll movement takes the user to the top of the next section of content and native scrolling is enabled. [Here's a demo of Header Scroll.](#)
 
 Here is an example for all the options available for headerScroll:
 
