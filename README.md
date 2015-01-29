@@ -7,7 +7,7 @@ Alton is a scrolling plugin that utilizes custom vertical scrolling effects in o
 Good question. Here's why Alton rules:
 
 1. The **Bookend** functionality. This allows you to [NATE FILL THIS SHIT OUT] which is awesome because [NATE FILL THIS SHIT OUT]. [Here's a demo of Bookend.](#)
-2. The **Header Scroll** functionality. This allows you to scrolljack *only* the "Hero Section", wherein the page will scroll to the top of the next section, then re-enable native scrolling for the rest of the page. [Here's a demo of Header Scroll.](#)
+2. The **Header Scroll** functionality. This allows you to scrolljack *only* the "Hero Section", wherein the page will scrolljack to the top of the section following the topmost Hero Section, then re-enable native scrolling for the rest of the page. [Here's a demo of Header Scroll.](#)
 3. The plugin uses **100% height** containers for full-screen presentation; it's great for impactful presentation.
 4. You have options for a couple different layouts right out of the box.
 5. It's lightweight, easy to implement, and not CPU intensive.
