@@ -3,7 +3,7 @@
 ##What is Alton?##
 Alton is a scrolling plugin that utilizes custom vertical scrolling effects in order to present and navigate through web content in a unique manner. It utilizes the whole scrolljacking idea, but greatly improves upon the often-poorly-implemented scrolljacking experiences you might be used to.
 
-##What makes Alton unique?## 
+## What makes Alton unique? ##
 Good question. Here's why Alton rules:
 
 1. The **Bookend** functionality. This allows you to [NATE FILL THIS SHIT OUT] which is awesome because [NATE FILL THIS SHIT OUT]. [Here's a demo of Bookend.](#)
