@@ -3,6 +3,16 @@
 ##What is Alton?##
 Alton is a scrolling plugin that utilizes custom vertical scrolling effects in order to present and navigate through web content in a unique manner. It utilizes the whole scrolljacking idea, but greatly improves upon the often-poorly-implemented scrolljacking experiences you might be used to.
 
+##What makes Alton unique?## 
+Good question. Here's why Alton rules:
+
+1. The **Bookend** functionality. This allows you to [NATE FILL THIS SHIT OUT] which is awesome because [NATE FILL THIS SHIT OUT]. [Here's a demo of Bookend.](#)
+2. The **Header Scroll** functionality. This allows you to scrolljack *only* the "Hero Section", wherein the page will scroll to the top of the next section, then re-enable native scrolling for the rest of the page. [Here's a demo of Header Scroll.](#)
+3. The plugin uses **100% height** containers for full-screen presentation; it's great for impactful presentation.
+4. You have options for a couple different layouts right out of the box.
+5. It's lightweight, easy to implement, and not CPU intensive.
+
+
 ## What is scrollJacking? ##
 scrollJacking is meant to provide options for those times when full page scroll doesn't make sense. We've added the option for having a header and footer area that you can scroll to, and also a featured-header single scroll.
 
@@ -41,7 +51,7 @@ $(document).scrollJack({
 ```
 
 ### Header Scroll ###
-The Idea behind header scroll is that you have a featured header area, that on scroll disappears, an you find yourself at the main content, with native scrolling enabled.
+The Idea behind header scroll is that you have a featured header area, that disappears on scroll, and you find yourself at the main content with native scrolling enabled.
 
 Here is an example for all the options available for headerScroll:
 
