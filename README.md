@@ -1,5 +1,8 @@
 # README #
 
+##What is Alton?##
+Alton is a scrolling plugin that utilizes custom vertical scrolling effects in order to present and navigate through web content in a unique manner. It utilizes the whole scrolljacking idea, but greatly improves upon the often-poorly-implemented scrolljacking experiences you might be used to.
+
 ## What is scrollJacking? ##
 scrollJacking is meant to provide options for those times when full page scroll doesn't make sense. We've added the option for having a header and footer area that you can scroll to, and also a featured-header single scroll.
 
@@ -87,10 +90,14 @@ License: GPL v3
 
 ## Frequently Asked Questions ##
 #### Does this work on touchscreens? ####
-No
+No.
 #### Why not? ####
 Touch events are a different beast, and considering the amount of people on cheaper, less powerful devices, or even the majority still stuck in contracts, the usability is usually non-existent. That being said, we are continuing to explore ways of implementing this for mobile devices.
 #### So you are looking at adding mobile functionality? ####
-Possibly
+Possibly!
+#### What currently happens on mobile devices, then, if Alton doesn't work? ####
+It falls back to regular scrolling on mobile. It's the best of both worlds, like pizza made out of candy.
 #### Scrolling appears unresponsive at times. What's going on? ####
 After every scroll there's a delay in effect to help get rid of Inertia Scroll on Macs. If you try to scroll within this delay it will prevent you from scrolling, until the barrage of mousewheel events has ended.
+#### Why did you name this plugin Alton? ####
+We're playing off the idea of height, in that this plugin uses 100% height containers. That led us to the discovery of [Robert Wadlow](http://en.wikipedia.org/wiki/Robert_Wadlow), the world's tallest man – also known as the Alton Giant. *mic drop*
