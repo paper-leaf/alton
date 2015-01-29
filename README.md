@@ -9,8 +9,8 @@ Good question. Here's why Alton rules:
 1. The **Bookend** functionality. This allows you to [NATE FILL THIS SHIT OUT] which is awesome because [NATE FILL THIS SHIT OUT]. [Here's a demo of Bookend.](#)
 2. The **Header Scroll** functionality. This allows you to scrolljack *only* the "Hero Section", wherein the page will scrolljack to the top of the section following the topmost Hero Section, then re-enable native scrolling for the rest of the page. [Here's a demo of Header Scroll.](#)
 3. The plugin uses **100% height** containers for full-screen presentation; it's great for impactful presentation.
-4. You have options for a couple different layouts right out of the box.
-5. It's lightweight, easy to implement, and not CPU intensive.
+4. You have options for a **couple of different layouts** right out of the box.
+5. It's** lightweight, easy to implement,** and **not CPU intensive.**
 
 ## What is "ScrollJacking"? ##
 Scrolljacking basically means we replace native scrolling (what you're used to) with targeted scrolling: when the user initiates a scroll, either with their mouse or keyboard, scrolljacking takes them to an exact vertical point on the screen (for example, the top of the next content container). When done properly, scrolljacking can be a part of a unique, enjoyable online experience.
