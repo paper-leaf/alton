@@ -1,7 +1,7 @@
 # README #
 
 ##What is Alton?##
-Alton is a scrolling plugin that utilizes custom vertical scrolling effects in order to present and navigate through web content in a unique manner. It utilizes the whole scrolljacking idea, but greatly improves upon the often-poorly-implemented scrolljacking experiences you might be used to.
+Alton is a JavaScript-powered scrolling plugin that utilizes custom vertical scrolling effects in order to present and navigate through web content in a unique manner. It utilizes the whole scrolljacking idea, but greatly improves upon the often-poorly-implemented scrolljacking experiences you might be used to.
 
 ## What makes Alton unique? ##
 Good question. Here's why Alton rules:
@@ -13,7 +13,7 @@ Good question. Here's why Alton rules:
 5. It's lightweight, easy to implement, and not CPU intensive.
 
 ## What is "ScrollJacking"? ##
-Scrolljacking is basically means we replace native scrolling (what you're used to) with targeted scrolling: when the user initiates a scroll, either with their mouse or keyboard, scrolljacking takes them to an exact vertical point on the screen (for example, the top of the next content container). 
+Scrolljacking basically means we replace native scrolling (what you're used to) with targeted scrolling: when the user initiates a scroll, either with their mouse or keyboard, scrolljacking takes them to an exact vertical point on the screen (for example, the top of the next content container). When done properly, scrolljacking can be a part of a unique, enjoyable online experience.
 
 ## Compatibility ##
 This plugin has been tested on IE8+ and with jQuery 1.7+. Anything less and you're on your own – sorry!
