@@ -1,5 +1,5 @@
 /* ===============================================================================
- * featured-scroll.js v1.0
+ * alton.js v1.0
  * ===============================================================================
  * Copyright 2014 Paper Leaf Design
  * http://www.paper-leaf.com
@@ -64,7 +64,7 @@
             animationType: 'slow'
         };
 
-    $.fn.scrollJack = function (options) {
+    $.fn.alton = function (options) {
         /* =============================================================================
          * User Settings
          * -------------------
