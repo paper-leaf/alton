@@ -91,7 +91,7 @@
             top = true,
             upCount = 0,
             downCount = 0,
-            windowHeight = $(window).height(),
+            windowHeight = $(window).outerHeight(),
             animating = false,
             docElem = window.document.documentElement,
             scrollOffset,
@@ -119,7 +119,7 @@
          * Update postion variable if headerScroll
          * ============================================================================= */
         if (settings.scrollMode === 'headerScroll') {
-            current = $('.' + settings.firstClass), // current element is the topmost element
+            current = $('.' + settings.firstClass); // current element is the topmost element
             next = $('.' + settings.bodyContainer + ':first');
         }
 
@@ -258,7 +258,7 @@
          * Update current, previous and next, based on window position on load.
          * ============================================================================ */
         function getCurrentPosition() {
-            if ($(window).scrollTop() >= next.offset().top && $(window).scrollTop()+$(window).height() !== $(document).height()) {
+            if ($(window).scrollTop() >= next.offset().top && $(window).scrollTop()+$(window).outerHeight() !== $(document).outerHeight()) {
                 var offsetTest;
                 $('.' + singleSlideClass).each(function () {
                     offsetTest = $(this).offset().top;
@@ -279,7 +279,7 @@
                 });
                 slideIndex(current, false);
             } else {
-                if (last != $('.' + singleSlideClass + ':last-child')[0]) {
+                if (last !== $('.' + singleSlideClass + ':last-child')[0]) {
                     slideNumbersFade(false);
                 } else {
                     slideNumbersFade(true);
@@ -322,7 +322,7 @@
 
                 // Set Slide Indexes and Fade Slide Numbers
                 if (settings.useSlideNumbers) {
-                    if (last == $('.' + singleSlideClass + ':last-child')[0]) {
+                    if (last === $('.' + singleSlideClass + ':last-child')[0]) {
                         slideIndex(previous, true);
                         slideIndex(current, false);
                     } else {
@@ -347,12 +347,12 @@
                         slideIndex(current, false);
                     }
                     $(document).scrollTo(current); // Scroll to selected element
-                } else if (last != $('.' + singleSlideClass + ':last-child')[0]) {
+                } else if (last !== $('.' + singleSlideClass + ':last-child')[0]) {
                     // Update the selectors
                     previous = $('.' + singleSlideClass + ':last-child')[0];
                     current = last;
                     next = null;
-                    if ($(window).scrollTop() + windowHeight + 10  >= $(document).height() - $(last).height()) {
+                    if ($(window).scrollTop() + windowHeight + 10  >= $(document).outerHeight() - $(last).outerHeight()) {
                         // Check for bottom
                         // Set Slide Indexes and Fade Slide Numbers
                         if (settings.useSlideNumbers) {
@@ -435,7 +435,7 @@
             if (element !== last) {
                 $("body,html").stop(true, true).animate({scrollTop: $(element).offset().top,easing: settings.animationType});
             } else {
-                $("body,html").stop(true, true).animate({scrollTop: $(document).height() - windowHeight,easing: settings.animationType});
+                $("body,html").stop(true, true).animate({scrollTop: $(document).outerHeight() - windowHeight,easing: settings.animationType});
             }
         };
 
@@ -458,13 +458,13 @@
             bodyScroll = $('body,html').is(':animated') || $('body').is(':animated') || $('html').is(':animated'); // Check if body is currently animated
 
             if (!bodyScroll) {
-                clearTimeout($.data(this, 'scrollTimer'));
+                clearTimeout($.data(this, 'scrollTimer')); // jshint ignore:line
                 if (navigator.platform.toUpperCase().indexOf('WIN')!==-1) {
-                    $.data(this, 'scrollTimer', setTimeout(function() {
+                    $.data(this, 'scrollTimer', setTimeout(function() { // jshint ignore:line
                         animating = false;
                     }, 500));
                 } else {
-                    $.data(this, 'scrollTimer', setTimeout(function() {
+                    $.data(this, 'scrollTimer', setTimeout(function() { // jshint ignore:line
                         animating = false;
                     }, 50));
                 }
@@ -493,7 +493,7 @@
         function headerScroll(e) {
             scrollOffset = scrollY();
             if (e.originalEvent.detail > 0 || e.originalEvent.wheelDelta < 0) {
-                if ($(next).offset().top > 0 && scrollOffset < $('.' + settings.firstClass).height()) {
+                if ($(next).offset().top > 0 && scrollOffset < $('.' + settings.firstClass).outerHeight()) {
                     if ($('.'+settings.firstClass).hasClass('active')) {
                         $('.'+settings.firstClass).toggleClass('active');
                         $(document).scrollTo(next);
@@ -507,14 +507,14 @@
                     return true;
                 }
             } else {
-              if (!$('.'+settings.firstClass).hasClass('active') && $(window).scrollTop() <= $('.'+settings.firstClass).height() ) {
+              if (!$('.'+settings.firstClass).hasClass('active') && $(window).scrollTop() <= $('.'+settings.firstClass).outerHeight() ) {
                     $('.'+settings.firstClass).toggleClass('active');
                     $(document).scrollTo(previous);
                     next = current;
                     current = previous;
                 } else if (!$('html, body').is(':animated')) {
                     return true;
-                } 
+                }
             }
             return false;
         }
@@ -566,8 +566,8 @@
                 }
             }
             $(window).resize(function() {
-                $(singleSlide[i]).css('height', $(window).height());
-                $(singleSlide[i]).outerHeight( $(window).height());
+                $(singleSlide[i]).css('height', $(window).outerHeight());
+                $(singleSlide[i]).outerHeight( $(window).outerHeight());
             });
         });
     };
