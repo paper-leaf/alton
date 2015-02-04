@@ -134,7 +134,7 @@
                     $(singleSlide[i]).css('height', windowHeight);
                     $(singleSlide[i]).outerHeight(windowHeight);
                 }
-                if (settings.useSlideNumbers) {
+                if (settings.useSlideNumbers && !is_mobile()) {
                     // Create Slider Buttons
                     $('.' + settings.bodyContainer).append('<div id="' + settings.slideNumbersContainer + '"></div>');
                     $('#' + settings.slideNumbersContainer).css({
@@ -526,10 +526,10 @@
          * ============================================================================ */
         $(document).ready(function () {
             initiateLayout(settings.scrollMode);
-            if (settings.scrollMode === 'featuredScroll') {
+            if (settings.scrollMode === 'featuredScroll' && !is_mobile()) {
                 getCurrentPosition();
             }
-            if (settings.scrollMode === 'featuredScroll') {
+            if (settings.scrollMode === 'featuredScroll' && !is_mobile()) {
                 $('#'+ settings.slideNumbersContainer +' li').on("click", function () {
                     clickToNavigate($(this).parent().children().index(this));
                 });
