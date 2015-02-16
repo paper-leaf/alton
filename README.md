@@ -6,8 +6,8 @@ Alton is a jQuery-powered scrolling plugin that utilizes custom vertical scrolli
 ## What makes Alton unique? ##
 Good question. Here's why Alton rules:
 
-1. The **Bookend** functionality. This allows you to [NATE FILL THIS SHIT OUT] which is awesome because [NATE FILL THIS SHIT OUT]. [Here's a demo of Bookend.](#)
-2. The **Hero Scroll** functionality. This allows you to scrolljack *only* the "Hero Section", wherein the page will scrolljack to the top of the section that immediately follows the Hero Section, then re-enable native scrolling for the rest of the page. [Here's a demo of Hero Scroll.](#)
+1. The **Bookend** functionality. This allows you to create a bookend experienc which is awesome because it allows to introduce your featured section, and conclude it, using a big cta or almost anything you can imagine. [Here's a demo of Bookend.](#)
+2. The **Hero Scroll** functionality. This allows you to scrolljack *only* the "Hero Section", wherein the page will scoll to the top of the section that immediately follows the Hero Section, then re-enable native scrolling for the rest of the page. [Here's a demo of Hero Scroll.](#)
 3. The plugin uses **100% height** containers for full-screen presentation; it's great for impactful presentation.
 4. You have options for a **couple of different layouts** right out of the box.
 5. It's** lightweight, easy to implement,** and **not CPU intensive.**
