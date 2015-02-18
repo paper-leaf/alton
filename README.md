@@ -16,7 +16,7 @@ Good question. Here's why Alton rules:
 Scrolljacking basically means we replace native scrolling (what you're used to) with targeted scrolling: when the user initiates a scroll, either with their mouse or keyboard, scrolljacking takes them to an exact vertical point on the screen (for example, the top of the next content container). When done properly, scrolljacking can be a part of a unique, enjoyable online experience.
 
 ## Compatibility ##
-This plugin has been tested on IE8+ and with jQuery 1.7+. Anything less and you're on your own – sorry!
+This plugin has been tested on IE9+ and with jQuery 1.7+. Anything less and you're on your own – sorry!
 
 ## Demos ##
 
