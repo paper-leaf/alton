@@ -48,12 +48,12 @@ Next add the following JavaScript where you want to call it. Note: **If you don'
 
 ```
 $(document).alton({
-	fullSlideContainer: 'full',
-	singleSlideClass: 'slide',
-	useSlideNumbers: true,
-	slideNumbersBorderColor: '#fff',
-	slideNumbersColor: 'transparent',
-	bodyContainer: 'pageWrapper',
+	fullSlideContainer: 'full', // Tell Alton the full height container
+	singleSlideClass: 'slide', // Tell Alton the full height slide class
+	useSlideNumbers: true, // Set to false if you don't want to use pagination
+	slideNumbersBorderColor: '#fff', // Set the outside color of the pagination items (also used for active)
+	slideNumbersColor: 'transparent', // Set the inner color of the pagination items (not active)
+	bodyContainer: 'pageWrapper', // Tell Alton the body class
 });
 ```
 
@@ -81,12 +81,12 @@ Next add the following JavaScript where you want to call it. Note: **If you don'
 
 ```
 $(document).alton({
-	fullSlideContainer: 'full',
-	singleSlideClass: 'slide',
-	useSlideNumbers: true,
-	slideNumbersBorderColor: '#fff',
-	slideNumbersColor: 'transparent',
-	bodyContainer: 'pageWrapper',
+	fullSlideContainer: 'full', // Tell Alton the full height container
+	singleSlideClass: 'slide', // Tell Alton the full height slide class
+	useSlideNumbers: true, // Set to false if you don't want to use pagination
+	slideNumbersBorderColor: '#fff', // Set the outside color of the pagination items (also used for active)
+	slideNumbersColor: 'transparent', // Set the inner color of the pagination items (not active)
+	bodyContainer: 'pageWrapper', // Tell Alton the body class
 });
 ```
 
@@ -110,6 +110,7 @@ Next add the following JavaScript where you want to call it. Note: **If you don'
 
 ```
 $(document).alton({
+	firstClass : 'header', // Set the first container class
 	bodyContainer: 'pageWrapper', // Set the body container
 	scrollMode: 'headerScroll', // Set the scroll mode
 });
