@@ -83,10 +83,12 @@ Next add the following JavaScript where you want to call it. Note: **If you don'
 
 ```
 $(document).alton({
-	fullSlideClass: 'full',
-	firstClass: 'header',
-	lastClass: 'footer',
+	fullSlideContainer: 'full',
+	singleSlideClass: 'slide',
 	useSlideNumbers: true,
+	slideNumbersBorderColor: '#fff',
+	slideNumbersColor: 'transparent',
+	bodyContainer: 'pageWrapper',
 });
 ```
 
