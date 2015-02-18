@@ -47,8 +47,8 @@ Next add the following JavaScript where you want to call it. Note: **If you don'
 ```
 $(document).ready(function() {
 	$(document).alton({
-	            fullSlideContainer: 'full',
-	            singleSlideClass: 'slide',
+	      	fullSlideContainer: 'full',
+	      	singleSlideClass: 'slide',
 	});
 });
 ```
@@ -72,7 +72,7 @@ First ensure you have the proper HTML structure:
 ```
 Next add the following JavaScript where you want to call it. Note: **If you don't want errors to occur, only run the script on the page where scrolling occurs**
 ```
-$(document).scrollJack({
+$(document).alton({
 	fullSlideClass: 'full',
 	firstClass: 'header',
 	lastClass: 'footer',
@@ -99,7 +99,7 @@ First ensure you have the proper HTML structure:
 Next add the following JavaScript where you want to call it. Note: **If you don't want errors to occur, only run the script on the page where scrolling occurs**
 
 ```
-$(document).scrollJack({
+$(document).alton({
     firstClass : 'header', // classname of the first element in your page content
     bodyContainer: 'pageWrapper', // ID of content container
     scrollMode: 'headerScroll', // Choose scroll mode
