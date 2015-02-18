@@ -19,7 +19,6 @@ Scrolljacking basically means we replace native scrolling (what you're used to) 
 This plugin has been tested on IE9+ and with jQuery 1.7+. Anything less and you're on your own – sorry!
 
 ## Demos ##
-
 In case you missed the links above, here are a few demos showing the different ways Alton can be used. You can also take a quick peek under the hood there to see exactly how we're implementing it.
 
 [Demo 1 (Standard Implementation)](#)
@@ -32,12 +31,24 @@ In case you missed the links above, here are a few demos showing the different w
 ### Standard Functionality ###
 *Standard* functionality brings you the full page scrolling you're used to. The "featured area of projects" in the middle section are all 100% height, and each scroll directs you to the next one (scroll down) or previous (scroll up). [Here's a demo of Standard.](#)
 
+Here is an example for all the options available for *Standard*:
+
+First ensure you have the proper HTML structure:
+```
+<section class="full">
+	<div class="slide"></div>
+	<div class="slide"></div>
+	<div class="slide"></div>
+</section>
+```
+
+Next add the following JavaScript where you want to call it. Note: **If you don't want errors to occur, only run the script on the page where scrolling occurs**
+
 ```
 $(document).ready(function() {
 	$(document).alton({
-	            fullSlideContainer: 'pane-container',
-	            singleSlideClass: 'pane',
-		    bodyContainer: 'pageWrapper',
+	            fullSlideContainer: 'full',
+	            singleSlideClass: 'slide',
 	});
 });
 ```
@@ -59,7 +70,7 @@ First ensure you have the proper HTML structure:
 </section>
 <footer class="footer" style="height:500px;"></footer>
 ```
-Next add the following where you want to call it. Note: **If you don't want errors to occur, only run the script on the page where scrolling occurs**
+Next add the following JavaScript where you want to call it. Note: **If you don't want errors to occur, only run the script on the page where scrolling occurs**
 ```
 $(document).scrollJack({
 	fullSlideClass: 'full',
@@ -84,7 +95,8 @@ First ensure you have the proper HTML structure:
 <!-- Insert Regular Content Here -->
 </section>
 ```
-Next add the following where you want to call it. Note: **If you don't want errors to occur, only run the script on the page where scrolling occurs**
+
+Next add the following JavaScript where you want to call it. Note: **If you don't want errors to occur, only run the script on the page where scrolling occurs**
 
 ```
 $(document).scrollJack({
