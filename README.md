@@ -33,7 +33,6 @@ In case you missed the links above, here are a few demos showing the different w
 *Standard* functionality brings you the full page scrolling you're used to. The "featured area of projects" in the middle section are all 100% height, and each scroll directs you to the next one (scroll down) or previous (scroll up). [Here's a demo of Standard.](#)
 
 ```
-#!javascript
 $(document).ready(function() {
 	$(document).alton({
 	            fullSlideContainer: 'pane-container',
@@ -51,7 +50,6 @@ Here is an example for all the options available for *Bookend*:
 First ensure you have the proper HTML structure:
 
 ```
-#!html
 <!-- Set the height for bookends. We left this in your hands so choose wisely -->
 <header class="header" style="height:500px;"></header>
 <section class="full">
@@ -63,8 +61,6 @@ First ensure you have the proper HTML structure:
 ```
 Next add the following where you want to call it. Note: **If you don't want errors to occur, only run the script on the page where scrolling occurs**
 ```
-#!javascript
-
 $(document).scrollJack({
 	fullSlideClass: 'full',
 	firstClass: 'header',
@@ -81,8 +77,6 @@ Here is an example for all the options available for *Hero Scroll*:
 First ensure you have the proper HTML structure:
 
 ```
-#!html
-
 <section class="header">
 <!-- Insert Header Content Here -->
 </section>
@@ -93,8 +87,6 @@ First ensure you have the proper HTML structure:
 Next add the following where you want to call it. Note: **If you don't want errors to occur, only run the script on the page where scrolling occurs**
 
 ```
-#!javascript
-
 $(document).scrollJack({
     firstClass : 'header', // classname of the first element in your page content
     bodyContainer: 'pageWrapper', // ID of content container
