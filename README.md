@@ -6,11 +6,17 @@ Alton is a jQuery-powered scrolling plugin that utilizes custom vertical scrolli
 ## What makes Alton unique? ##
 Good question. Here's why Alton rules:
 
-1. The **Bookend** functionality. This allows you to create a bookend experience which allows you to seamlessly introduce your full height section, and summarize or even conclude it. [Here's a demo of Bookend.](#)
-2. The **Hero Scroll** functionality. This allows you to scrolljack *only* the "Hero Section", wherein the page will scoll to the top of the section that immediately follows the Hero Section, then re-enable native scrolling for the rest of the page. [Here's a demo of Hero Scroll.](#)
-3. The plugin uses **100% height** containers for full-screen presentation; it's great for impactful presentation.
-4. You have options for a **couple of different layouts** right out of the box.
-5. It's **lightweight, easy to implement,** and **not CPU intensive.**
+1. The **Standard** functionality. Standard brings you the full page scrolling you're used to by making the "featured area of projects" in the middle section 100% height, and each scroll directs you to the next one (scroll down) or previous (scroll up). [Here's a demo of Bookend.](#)
+
+2. The **Bookend** functionality. This allows you to create a bookend experience which allows you to seamlessly introduce your full height section, and summarize or even conclude it. [Here's a demo of Bookend.](#)
+
+3. The **Hero Scroll** functionality. This allows you to scrolljack *only* the "Hero Section", wherein the page will scoll to the top of the section that immediately follows the Hero Section, then re-enable native scrolling for the rest of the page. [Here's a demo of Hero Scroll.](#)
+
+4. The plugin uses **100% height** containers for full-screen presentation; it's great for impactful presentation.
+
+5. You have options for a **couple of different layouts** right out of the box.
+
+6. It's **lightweight, easy to implement,** and **not CPU intensive.**
 
 ## What is "ScrollJacking"? ##
 Scrolljacking basically means we replace native scrolling (what you're used to) with targeted scrolling: when the user initiates a scroll, either with their mouse or keyboard, scrolljacking takes them to an exact vertical point on the screen (for example, the top of the next content container). When done properly, scrolljacking can be a part of a unique, enjoyable online experience.
