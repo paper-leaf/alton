@@ -29,6 +29,20 @@ In case you missed the links above, here are a few demos showing the different w
 [Demo 3 (with Hero Scroll functionality)](#)
 
 ## Quick start ##
+### Standard Functionality ###
+*Standard* functionality brings you the full page scrolling you're used to. The "featured area of projects" in the middle section are all 100% height, and each scroll directs you to the next one (scroll down) or previous (scroll up). [Here's a demo of Standard.](#)
+
+```
+#!javascript
+$(document).ready(function() {
+	$(document).alton({
+	            fullSlideContainer: 'pane-container',
+	            singleSlideClass: 'pane',
+		    bodyContainer: 'pageWrapper',
+	});
+});
+```
+
 ### Bookend Functionality ###
 The Idea behind *Bookend* functionality is that you have a header and footer sections ("bookends"), with a featured area of projects or something in the middle. The "featured area of projects" in the middle section are all 100% height, whereas the bookends can be whatever height you'd like them to be. [Here's a demo of Bookend.](#)
 
