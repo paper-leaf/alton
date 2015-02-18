@@ -99,10 +99,10 @@ First ensure you have the proper HTML structure:
 
 ```
 <section class="header">
-<!-- Insert Header Content Here -->
+	<!-- Insert Header Content Here -->
 </section>
 <section class="pageWrapper">
-<!-- Insert Regular Content Here -->
+	<!-- Insert Regular Content Here -->
 </section>
 ```
 
