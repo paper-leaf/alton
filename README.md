@@ -118,7 +118,7 @@ $(document).alton({
 
 ### All Available Options ###
 
-Heres a list of all the options that come built in to Alton, along with their default values.
+Here's a list of all the options that come built in to Alton, along with their default values.
 
 ```
 firstClass : 'header', // classname of the first element in your page content
