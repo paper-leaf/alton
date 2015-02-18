@@ -31,7 +31,7 @@ In case you missed the links above, here are a few demos showing the different w
 ### Standard Functionality ###
 *Standard* functionality brings you the full page scrolling you're used to. The "featured area of projects" in the middle section are all 100% height, and each scroll directs you to the next one (scroll down) or previous (scroll up). [Here's a demo of Standard.](#)
 
-Here is an example for all the options available for *Standard*:
+Here is an example for all the options needed for *Standard*:
 
 First ensure you have the proper HTML structure:
 ```
@@ -56,7 +56,7 @@ $(document).ready(function() {
 ### Bookend Functionality ###
 The Idea behind *Bookend* functionality is that you have a header and footer sections ("bookends"), with a featured area of projects or something in the middle. The "featured area of projects" in the middle section are all 100% height, whereas the bookends can be whatever height you'd like them to be. [Here's a demo of Bookend.](#)
 
-Here is an example for all the options available for *Bookend*:
+Here is an example for all the options needed for *Bookend*:
 
 First ensure you have the proper HTML structure:
 
@@ -83,7 +83,7 @@ $(document).scrollJack({
 ### Hero Scroll ###
 The Idea behind *Hero Scroll* is that we only apply scrolljacking to the topmost "Hero" container; one scroll movement takes the user to the top of the next section of content and native scrolling is enabled. [Here's a demo of Hero Scroll.](#)
 
-Here is an example for all the options available for *Hero Scroll*:
+Here is an example for all the options needed for *Hero Scroll*:
 
 First ensure you have the proper HTML structure:
 
