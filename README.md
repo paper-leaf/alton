@@ -23,7 +23,9 @@ This plugin has been tested on IE9+ and with jQuery 1.7+. Anything less and you'
 In case you missed the links above, here are a few demos showing the different ways Alton can be used. You can also take a quick peek under the hood there to see exactly how we're implementing it.
 
 [Demo 1 (Standard Implementation)](#)
+
 [Demo 2 (with Bookend functionality)](#)
+
 [Demo 3 (with Hero Scroll functionality)](#)
 
 ## Quick start ##
