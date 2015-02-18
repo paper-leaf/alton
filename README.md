@@ -35,11 +35,13 @@ Here is an example for all the options needed for *Standard*:
 
 First ensure you have the proper HTML structure:
 ```
-<section class="full">
-	<div class="slide"></div>
-	<div class="slide"></div>
-	<div class="slide"></div>
-</section>
+<body class="pageWrapper">
+	<section class="full">
+		<div class="slide"></div>
+		<div class="slide"></div>
+		<div class="slide"></div>
+	</section>
+</body>
 ```
 
 Next add the following JavaScript where you want to call it. Note: **If you don't want errors to occur, only run the script on the page where scrolling occurs**
@@ -48,7 +50,11 @@ Next add the following JavaScript where you want to call it. Note: **If you don'
 $(document).ready(function() {
 	$(document).alton({
 	      	fullSlideContainer: 'full',
-	      	singleSlideClass: 'slide',
+		singleSlideClass: 'slide',
+		useSlideNumbers: true,
+		slideNumbersBorderColor: '#fff',
+		slideNumbersColor: 'transparent',
+		bodyContainer: 'pageWrapper',
 	});
 });
 ```
@@ -61,16 +67,20 @@ Here is an example for all the options needed for *Bookend*:
 First ensure you have the proper HTML structure:
 
 ```
-<!-- Set the height for bookends. We left this in your hands so choose wisely -->
-<header class="header" style="height:500px;"></header>
-<section class="full">
-	<div class="slide"></div>
-	<div class="slide"></div>
-	<div class="slide"></div>
-</section>
-<footer class="footer" style="height:500px;"></footer>
+<body class="pageWrapper">
+	<!-- Set the height for bookends. We left this in your hands so choose wisely -->
+	<header class="header" style="height:500px;"></header>
+	<section class="full">
+		<div class="slide"></div>
+		<div class="slide"></div>
+		<div class="slide"></div>
+	</section>
+	<footer class="footer" style="height:500px;"></footer>
+</body>
 ```
+
 Next add the following JavaScript where you want to call it. Note: **If you don't want errors to occur, only run the script on the page where scrolling occurs**
+
 ```
 $(document).alton({
 	fullSlideClass: 'full',
