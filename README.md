@@ -47,15 +47,13 @@ First ensure you have the proper HTML structure:
 Next add the following JavaScript where you want to call it. Note: **If you don't want errors to occur, only run the script on the page where scrolling occurs**
 
 ```
-$(document).ready(function() {
-	$(document).alton({
-	      	fullSlideContainer: 'full',
-		singleSlideClass: 'slide',
-		useSlideNumbers: true,
-		slideNumbersBorderColor: '#fff',
-		slideNumbersColor: 'transparent',
-		bodyContainer: 'pageWrapper',
-	});
+$(document).alton({
+	fullSlideContainer: 'full',
+	singleSlideClass: 'slide',
+	useSlideNumbers: true,
+	slideNumbersBorderColor: '#fff',
+	slideNumbersColor: 'transparent',
+	bodyContainer: 'pageWrapper',
 });
 ```
 
