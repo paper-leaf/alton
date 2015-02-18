@@ -117,19 +117,22 @@ $(document).alton({
 ```
 
 ### All Available Options ###
+
+Heres a list of all the options that come built in to Alton, along with their default values.
+
 ```
-	firstClass : 'header', // classname of the first element in your page content
-	fullSlideContainer : 'full', // full page elements container for 
-	singleSlideClass : 'slide', // class for each individual slide
-	nextElement : 'div', // set the first element in the first page series.
-	previousClass : null, // null when starting at the top. Will be updated based on current postion
-	lastClass: 'footer', // last block to scroll to
-	slideNumbersContainer: 'slide-numbers', // ID of Slide Numbers
-	bodyContainer: 'pageWrapper', // ID of content container
-	scrollMode: 'featuredScroll', // Choose scroll mode
-	useSlideNumbers: false, // Enable or disable slider
-	slideNumbersBorderColor: '#fff', // outside color for slide numbers
-	slideNumbersColor: '#000', // interior color when slide numbers inactive
+firstClass : 'header', // classname of the first element in your page content
+fullSlideContainer : 'full', // full page elements container for 
+singleSlideClass : 'slide', // class for each individual slide
+nextElement : 'div', // set the first element in the first page series.
+previousClass : null, // null when starting at the top. Will be updated based on current postion
+lastClass: 'footer', // last block to scroll to
+slideNumbersContainer: 'slide-numbers', // ID of Slide Numbers
+bodyContainer: 'pageWrapper', // ID of content container
+scrollMode: 'featuredScroll', // Choose scroll mode
+useSlideNumbers: false, // Enable or disable slider
+slideNumbersBorderColor: '#fff', // outside color for slide numbers
+slideNumbersColor: '#000', // interior color when slide numbers inactive
 ```
 ## What's included ##
 
