@@ -110,9 +110,8 @@ Next add the following JavaScript where you want to call it. Note: **If you don'
 
 ```
 $(document).alton({
-    firstClass : 'header', // classname of the first element in your page content
-    bodyContainer: 'pageWrapper', // ID of content container
-    scrollMode: 'headerScroll', // Choose scroll mode
+	bodyContainer: 'pageWrapper', // Set the body container
+	scrollMode: 'headerScroll', // Set the scroll mode
 });
 ```
 
