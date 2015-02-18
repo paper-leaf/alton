@@ -6,7 +6,7 @@ Alton is a jQuery-powered scrolling plugin that utilizes custom vertical scrolli
 ## What makes Alton unique? ##
 Good question. Here's why Alton rules:
 
-1. The **Standard** functionality. Standard brings you the full page scrolling you're used to by making the "featured area of projects" in the middle section 100% height, and each scroll directs you to the next one (scroll down) or previous (scroll up). [Here's a demo of Bookend.](#)
+1. The **Standard** functionality. Standard brings you the full page scrolling you're used to by making the "featured area of projects" in the middle section 100% height, and each scroll directs you to the next one (scroll down) or previous (scroll up). [Here's a demo of Standard.](#)
 
 2. The **Bookend** functionality. This allows you to create a bookend experience which allows you to seamlessly introduce your full height section, and summarize or even conclude it. [Here's a demo of Bookend.](#)
 
