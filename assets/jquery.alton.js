@@ -161,16 +161,34 @@
 
                     while (testCount < projectCount) {
                         $('.' + settings.bodyContainer + ' #' + settings.slideNumbersContainer + ' ul').append('<li class="paginate"></ul>');
-                        $('.paginate').css({
-                            'cursor':'pointer',
-                            'border-radius':'50%',
-                            'list-style': 'none',
-                            'background': settings.slideNumbersBorderColor,
-                            'border':'2px solid' + settings.slideNumbersBorderColor,
-                            'height': '10px',
-                            'width': '10px',
-                            'margin': '5px 0'
-                        });
+                        if (msieversion()) {
+                            $('.paginate').css({
+                                'cursor':'pointer',
+                                'border-radius':'50%',
+                                'list-style': 'none',
+                                'background': settings.slideNumbersBorderColor,
+                                'border-color': settings.slideNumbersBorderColor,
+                                'border-width': '2px',
+                                'border-style': 'solid',
+                                'height': '11px',
+                                'width': '11px',
+                                'margin': '5px 0'
+                            });
+                        } else {
+                             $('.paginate').css({
+                                'cursor':'pointer',
+                                'border-radius':'50%',
+                                'list-style': 'none',
+                                'background': settings.slideNumbersBorderColor,
+                                'border-color': settings.slideNumbersBorderColor,
+                                'border-width': '2px',
+                                'border-style': 'solid',
+                                'height': '10px',
+                                'width': '10px',
+                                'margin': '5px 0'
+                            });
+                        }
+                       
                         testCount += 1;
                     }
                     // Store the slidenumbers
@@ -185,8 +203,29 @@
                 $('.'+settings.firstClass).css('height', windowHeight + 10);
                 if (!$('.'+settings.firstClass).hasClass('active')) {
                     $('.'+settings.firstClass).toggleClass('active');
+                    if (msieversion()) {
+                        $('.paginate.active').css({
+                            'margin-left': '-1px',
+                            'border-color': '#' + settings.slideNumbersBorderColor,
+                            'border-style': 'solid',
+                            'border-width': '2px',
+                            'height': '8px',
+                            'width': '8px'
+                        });
+                    }
                 }
             }
+        }
+
+        function msieversion() {
+            var ua = window.navigator.userAgent;
+            var msie = ua.indexOf("MSIE ");
+
+            if (msie > 0 || navigator.userAgent.match(/Trident.*rv\:11\./))      // If Internet Explorer, return version number
+                return true;
+            else
+                return false;
+           
         }
 
         /* ============================================================================
