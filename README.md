@@ -6,11 +6,11 @@ Alton is a jQuery-powered scrolling plugin that utilizes custom vertical scrolli
 ## What makes Alton unique? ##
 Good question. Here's why Alton rules:
 
-1. The **Standard** functionality. Standard brings you the full page scrolling you're used to by making the "featured area of projects" in the middle section 100% height, and each scroll directs you to the next one (scroll down) or previous (scroll up). [Here's a demo of Standard.](#)
+1. The **Standard** functionality. Standard brings you the full page scrolling you're used to by making the "featured area of projects" in the middle section 100% height, and each scroll directs you to the next one (scroll down) or previous (scroll up). [Here's a demo of Standard.](http://demo.paper-leaf.com/alton/standard)
 
-2. The **Bookend** functionality. This allows you to create a bookend experience which allows you to seamlessly introduce your full height section, and summarize or even conclude it. [Here's a demo of Bookend.](#)
+2. The **Bookend** functionality. This allows you to create a bookend experience which allows you to seamlessly introduce your full height section, and summarize or even conclude it. [Here's a demo of Bookend.](http://demo.paper-leaf.com/alton/bookend)
 
-3. The **Hero Scroll** functionality. This allows you to scrolljack *only* the "Hero Section", wherein the page will scoll to the top of the section that immediately follows the Hero Section, then re-enable native scrolling for the rest of the page. [Here's a demo of Hero Scroll.](#)
+3. The **Hero Scroll** functionality. This allows you to scrolljack *only* the "Hero Section", wherein the page will scoll to the top of the section that immediately follows the Hero Section, then re-enable native scrolling for the rest of the page. [Here's a demo of Hero Scroll.](http://demo.paper-leaf.com/alton/heroscroll)
 
 4. The plugin uses **100% height** containers for full-screen presentation; it's great for impactful presentation.
 
@@ -27,15 +27,15 @@ This plugin has been tested on IE9+ and with jQuery 1.7+. Anything less and you'
 ## Demos ##
 In case you missed the links above, here are a few demos showing the different ways Alton can be used. You can also take a quick peek under the hood there to see exactly how we're implementing it.
 
-[Demo 1 (Standard Implementation)](#)
+[Demo 1 (Standard Implementation)](http://demo.paper-leaf.com/alton/standard)
 
-[Demo 2 (with Bookend functionality)](#)
+[Demo 2 (with Bookend functionality)](http://demo.paper-leaf.com/alton/bookend)
 
-[Demo 3 (with Hero Scroll functionality)](#)
+[Demo 3 (with Hero Scroll functionality)](http://demo.paper-leaf.com/alton/heroscroll)
 
 ## Quick start ##
 ### Standard Functionality ###
-*Standard* functionality brings you the full page scrolling you're used to. The "featured area of projects" in the middle section are all 100% height, and each scroll directs you to the next one (scroll down) or previous (scroll up). [Here's a demo of Standard.](#)
+*Standard* functionality brings you the full page scrolling you're used to. The "featured area of projects" in the middle section are all 100% height, and each scroll directs you to the next one (scroll down) or previous (scroll up). [Here's a demo of Standard.](http://demo.paper-leaf.com/alton/standard)
 
 Here is an example for all the options needed for *Standard*:
 
@@ -64,7 +64,7 @@ $(document).alton({
 ```
 
 ### Bookend Functionality ###
-The Idea behind *Bookend* functionality is that you have a header and footer sections ("bookends"), with a featured area of projects or something in the middle. The "featured area of projects" in the middle section are all 100% height, whereas the bookends can be whatever height you'd like them to be. [Here's a demo of Bookend.](#)
+The Idea behind *Bookend* functionality is that you have a header and footer sections ("bookends"), with a featured area of projects or something in the middle. The "featured area of projects" in the middle section are all 100% height, whereas the bookends can be whatever height you'd like them to be. [Here's a demo of Bookend.](http://demo.paper-leaf.com/alton/bookend)
 
 Here is an example for all the options needed for *Bookend*:
 
@@ -97,7 +97,7 @@ $(document).alton({
 ```
 
 ### Hero Scroll ###
-The Idea behind *Hero Scroll* is that we only apply scrolljacking to the topmost "Hero" container; one scroll movement takes the user to the top of the next section of content and native scrolling is enabled. [Here's a demo of Hero Scroll.](#)
+The Idea behind *Hero Scroll* is that we only apply scrolljacking to the topmost "Hero" container; one scroll movement takes the user to the top of the next section of content and native scrolling is enabled. [Here's a demo of Hero Scroll.](http://demo.paper-leaf.com/alton/heroscroll)
 
 Here is an example for all the options needed for *Hero Scroll*:
 
