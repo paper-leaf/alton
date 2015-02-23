@@ -605,8 +605,10 @@
                 }
             }
             $(window).resize(function() {
-                $(singleSlide[i]).css('height', $(window).outerHeight());
-                $(singleSlide[i]).outerHeight( $(window).outerHeight());
+                $(singleSlide).each(function() {
+                    $(this).css('height', $(window).outerHeight());
+                    $(this).outerHeight($(window).outerHeight());
+                });
             });
         });
     };
