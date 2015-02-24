@@ -578,21 +578,31 @@
                     switch (e.which) {
                     case 40: // arrowUp
                         $(document).moveDown(e);
+                        e.preventDefault();
+                        break;
+                    case 32: // pageUp 
+                        $(document).moveDown(e);
+                        e.preventDefault();
                         break;
                     case 33: // pageUp 
                         $(document).moveDown(e);
+                        e.preventDefault();
                         break;
                     case 34: // pageUp
                         $(document).moveUp(e);
+                        e.preventDefault();
                         break;
                     case 38: // arrowDown
                         $(document).moveUp(e);
+                        e.preventDefault();
                         break;
                     case 50: // home
                         $(document).scrollTo('.' + settings.firstClass);
+                        e.preventDefault();
                         break;
                     case 49: // end
                         $(document).scrollTo(last);
+                        e.preventDefault();
                         break;
                     }
                 });
