@@ -221,11 +221,11 @@
             var ua = window.navigator.userAgent;
             var msie = ua.indexOf("MSIE ");
 
-            if (msie > 0 || navigator.userAgent.match(/Trident.*rv\:11\./))      // If Internet Explorer, return version number
+            if (msie > 0 || navigator.userAgent.match(/Trident.*rv\:11\./)) {   // If Internet Explorer, return version number
                 return true;
-            else
+            } else {
                 return false;
-           
+            }
         }
 
         /* ============================================================================
@@ -582,7 +582,7 @@
                     case 33: // pageUp 
                         $(document).moveDown(e);
                         break;
-                    case 34: // pageDown
+                    case 34: // pageUp
                         $(document).moveUp(e);
                         break;
                     case 38: // arrowDown
