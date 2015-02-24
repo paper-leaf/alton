@@ -603,13 +603,13 @@
                 } else if (settings.scrollMode === 'headerScroll') {
                     $(document).on({'DOMMouseScroll mousewheel' : headerScroll });
                 }
-            }
-            $(window).resize(function() {
-                $(singleSlide).each(function() {
-                    $(this).css('height', $(window).outerHeight());
-                    $(this).outerHeight($(window).outerHeight());
+                $(window).resize(function() {
+                    $(singleSlide).each(function() {
+                        $(this).css('height', $(window).outerHeight());
+                        $(this).outerHeight($(window).outerHeight());
+                    });
                 });
-            });
+            }
         });
     };
 })(jQuery);
