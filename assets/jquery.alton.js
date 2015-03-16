@@ -472,9 +472,9 @@
          * ============================================================================ */
         $.fn.scrollTo = function (element) {
             if (element !== last) {
-                $("body,html").stop(true, true).animate({scrollTop: $(element).offset().top,easing: settings.animationType});
+                $("body,html").stop(true, true).animate({scrollTop: $(element).offset().top}, {duration: 375});
             } else {
-                $("body,html").stop(true, true).animate({scrollTop: $(document).outerHeight() - windowHeight,easing: settings.animationType});
+                $("body,html").stop(true, true).animate({scrollTop: $(document).outerHeight() - windowHeight}, {duration: 375});
             }
         };
 
@@ -496,29 +496,23 @@
         function featuredScroll(e) {
             bodyScroll = $('body,html').is(':animated') || $('body').is(':animated') || $('html').is(':animated'); // Check if body is currently animated
 
-            if (!bodyScroll) {
-                clearTimeout($.data(this, 'scrollTimer')); // jshint ignore:line
-                if (navigator.platform.toUpperCase().indexOf('WIN')!==-1) {
-                    $.data(this, 'scrollTimer', setTimeout(function() { // jshint ignore:line
-                        animating = false;
-                    }, 500));
-                } else {
-                    $.data(this, 'scrollTimer', setTimeout(function() { // jshint ignore:line
-                        animating = false;
-                    }, 50));
-                }
-            }
+            clearTimeout($.data(this, 'scrollTimer')); // jshint ignore:line
+            $.data(this, 'scrollTimer', setTimeout(function() { // jshint ignore:line
+                animating = false;
+            }, 35));
 
-            if (e.originalEvent.detail/3 >= 1 && !animating || e.originalEvent.wheelDelta / 3 <= -1 && !animating) {
+            if (e.originalEvent.detail > 1 && !animating || e.originalEvent.wheelDelta < -1 && !animating) {
                 // Check if scrolling down
                 downCount += 1;
                 $(document).moveDown();
                 animating = true;
-            } else if (e.originalEvent.detail / 3 <= -1 && !animating || e.originalEvent.wheelDelta / 3 >= 1 && !animating) {
+                preventDefault();
+            } else if (e.originalEvent.detail < -1 && !animating || e.originalEvent.wheelDelta > 1 && !animating) {
                 // Check if not scrolling up
                 upCount += 1;
                 $(document).moveUp();
                 animating = true;
+                preventDefault();
             }
             return false;
         }
