@@ -316,13 +316,17 @@
                         top = false;
                     }
                 });
-                slideIndex(current, false);
-            } else {
-                if (last !== $('.' + singleSlideClass + ':last-child')[0]) {
-                    slideNumbersFade(false);
-                } else {
-                    slideNumbersFade(true);
+                if (settings.useSlideNumbers) {
                     slideIndex(current, false);
+                }
+            } else {
+                if (settings.useSlideNumbers) {
+                    if (last !== $('.' + singleSlideClass + ':last-child')[0]) {
+                        slideNumbersFade(false);
+                    } else {
+                        slideNumbersFade(true);
+                        slideIndex(current, false);
+                    }
                 }
                 $(document).scrollTo(current);
             }
