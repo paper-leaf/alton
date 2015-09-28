@@ -535,7 +535,7 @@
     function featuredScroll(e) {
       bodyScroll = $('body,html').is(':animated') || $('body').is(':animated') || $('html').is(':animated'); // Check if body is currently animated
 
-      if (e.type == 'mousewheel') {
+      if (e.type == 'mousewheel' || e.type == "DOMMouseScroll") {  //  <-- fix for firefox
         clearTimeout($.data(this, 'scrollTimer')); // jshint ignore:line
         $(document).unbind({
           'scroll' : featuredScroll
