@@ -111,8 +111,10 @@
       previous = null;
       current = next;
       next = current.next();
-      last = $('.' + singleSlideClass + ':last-child')[0];
     }
+    if (!$('.' + settings.lastClass).length) {
+	    last = $('.' + singleSlideClass + ':last-child')[0];
+	  }
 
     /* =============================================================================
      * Position Variables
