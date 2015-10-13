@@ -360,10 +360,12 @@
      * Stops default scroll animations when called
      * ============================================================================ */
     function preventDefault(e) {
-      e = e || window.event;
-      if (e.preventDefault) {
-        e.stopPropagation();
-        e.returnValue = false;
+      if(e != undefined) {
+        e = e || window.event;
+        if (e.preventDefault) {
+          e.stopPropagation();
+          e.returnValue = false;
+        } 
       }
     }
 
