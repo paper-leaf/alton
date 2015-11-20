@@ -697,9 +697,6 @@
                 next = null;
                 e.preventDefault();
                 $(document).scrollTo(last);
-                break;
-              default:
-              e.preventDefault();
             }
         }
       }
