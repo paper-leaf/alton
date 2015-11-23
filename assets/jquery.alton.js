@@ -82,7 +82,7 @@
       bodyScroll,
       down = false,
       up = false,
-      current = $('.' + settings.firstClass),
+      current,
       next = $('.' + singleSlideClass + ':first'),
       previous = null,
       last = $('.' + settings.lastClass),
@@ -105,14 +105,14 @@
       singleSlide = document.querySelectorAll('.' + singleSlideClass);
     }
 
-    if (!current.length) {
+    if ($('.' + settings.firstClass).length > 0) {
+      current = $('.' + settings.firstClass); // current element is the topmost element
+    } else {
+      previous = null;
       current = next;
       next = current.next();
+      last = $('.' + singleSlideClass + ':last-child')[0];
     }
-    if (!last.length) {
-      last = $('.' + singleSlideClass + ':last');
-    }
-    last = last[0];
 
     /* =============================================================================
      * Position Variables
