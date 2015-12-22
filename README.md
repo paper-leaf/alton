@@ -40,7 +40,7 @@ In case you missed the links above, here are a few demos showing the different w
 Here is an example for all the options needed for *Standard*:
 
 First ensure you have the proper HTML structure:
-```
+```html
 <body class="pageWrapper">
 	<section class="full">
 		<div class="slide"></div>
@@ -52,7 +52,7 @@ First ensure you have the proper HTML structure:
 
 Next add the following JavaScript where you want to call it. Note: **If you don't want errors to occur, only run the script on the page where scrolling occurs**
 
-```
+```js
 $(document).alton({
 	fullSlideContainer: 'full', // Tell Alton the full height container
 	singleSlideClass: 'slide', // Tell Alton the full height slide class
@@ -70,7 +70,7 @@ Here is an example for all the options needed for *Bookend*:
 
 First ensure you have the proper HTML structure:
 
-```
+```html
 <body class="pageWrapper">
 	<!-- Set the height for bookends. We left this in your hands so choose wisely -->
 	<header class="header" style="height:500px;"></header>
@@ -85,7 +85,7 @@ First ensure you have the proper HTML structure:
 
 Next add the following JavaScript where you want to call it. Note: **If you don't want errors to occur, only run the script on the page where scrolling occurs**
 
-```
+```js
 $(document).alton({
 	fullSlideContainer: 'full', // Tell Alton the full height container
 	singleSlideClass: 'slide', // Tell Alton the full height slide class
@@ -103,7 +103,7 @@ Here is an example for all the options needed for *Hero Scroll*:
 
 First ensure you have the proper HTML structure:
 
-```
+```html
 <section class="header">
 	<!-- Insert Header Content Here -->
 </section>
@@ -114,7 +114,7 @@ First ensure you have the proper HTML structure:
 
 Next add the following JavaScript where you want to call it. Note: **If you don't want errors to occur, only run the script on the page where scrolling occurs**
 
-```
+```js
 $(document).alton({
 	firstClass : 'header', // Set the first container class
 	bodyContainer: 'pageWrapper', // Set the body container
@@ -126,7 +126,7 @@ $(document).alton({
 
 Here's a list of all the options that come built in to Alton, along with their default values.
 
-```
+```js
 firstClass : 'header', // classname of the first element in your page content
 fullSlideContainer : 'full', // full page elements container for 
 singleSlideClass : 'slide', // class for each individual slide
