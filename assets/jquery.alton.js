@@ -360,7 +360,7 @@
      * Stops default scroll animations when called
      * ============================================================================ */
     function preventDefault(e) {
-      if(e != undefined) {
+      if(e !== undefined) {
         e = e || window.event;
         if (e.preventDefault) {
           e.stopPropagation();
@@ -634,7 +634,7 @@
                 break;
               case 32: // pageUp
                 e.preventDefault();
-                if (map['16'] == true) {
+                if (map['16'] === true) {
                   $(document).moveUp(e);
                 } else {
                   $(document).moveDown(e);
@@ -698,7 +698,7 @@
                 e.preventDefault();
                 $(document).scrollTo(last);
             }
-        }
+        };
       }
 
       if (!is_mobile()) {
