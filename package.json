@@ -1,6 +1,6 @@
 {
   "name": "alton",
-  "version": "1.0.0",
+  "version": "1.2.0",
   "description": "Alton is a jQuery-powered scrolling plugin, with a twist.",
   "main": "jquery.alton.min.js",
   "repository": {
@@ -18,4 +18,5 @@
     "url": "https://github.com/paper-leaf/alton/issues"
   },
   "homepage": "https://github.com/paper-leaf/alton#readme"
+
 }

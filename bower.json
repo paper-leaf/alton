@@ -1,0 +1,23 @@
+{
+  "name": "alton",
+  "description": "Alton is a jQuery-powered scrolling plugin, with a twist.",
+  "main": [
+    "assets/jquery.alton.js"
+  ],
+  "dependencies": {
+    "jquery": "~2.2.4"
+  },
+  "keywords": [
+    "heroscroll",
+    "scrolljacking",
+    "jquery"
+  ],
+  "authors": [
+    "Nathan Gould <ntan97@gmail.com>"
+  ],
+  "license": "GPL-3.0",
+  "ignore": [
+    "package.json"
+  ],
+  "private": false
+}
