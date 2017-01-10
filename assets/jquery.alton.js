@@ -1,5 +1,5 @@
 /* ===============================================================================
- * alton.js v1.2.0
+ * alton.js v1.2.0.1
  * ===============================================================================
  * Copyright 2014 Paper Leaf Design
  * http://www.paper-leaf.com
@@ -61,7 +61,8 @@
     useSlideNumbers: false, // Enable or disable slider
     slideNumbersBorderColor: '#fff', // outside color for slide numbers
     slideNumbersColor: '#000', // interior color when slide numbers inactive
-    animationType: 'slow' // animation type: currently doesn't do anything
+    animationType: 'slow', // animation type: currently doesn't do anything
+    callback: false, // default is no callback
   };
 
   $.fn.alton = function(options) {
@@ -306,6 +307,11 @@
 
       slideIndex($('#' + settings.slideNumbersContainer + ' li.active'), true);
       slideIndex(elementContainer[elementIndex], false);
+
+      // Callback function
+      if ( typeof settings.callback == 'function' ) {
+        settings.callback();
+      }
     }
 
     /* ============================================================================
@@ -435,6 +441,11 @@
           });
         }
       }
+
+      // Callback function
+      if ( typeof settings.callback == 'function' ) {
+        settings.callback();
+      }
     };
 
     /* ============================================================================
@@ -495,6 +506,11 @@
       up = true;
       down = false;
 
+      // Callback function
+      if ( typeof settings.callback == 'function' ) {
+        settings.callback();
+      }
+    
       // Stop default scrolling animations
     };
 
