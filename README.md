@@ -1,6 +1,6 @@
 # README #
 
-##What is Alton?##
+## What is Alton? ##
 Alton is a jQuery-powered scrolling plugin that utilizes custom vertical scrolling effects in order to present and navigate through web content in a unique manner. It utilizes the whole scrolljacking idea, but greatly improves upon the often-poorly-implemented scrolljacking experiences you might be used to.
 
 ## What makes Alton unique? ##
