@@ -61,7 +61,8 @@
     useSlideNumbers: false, // Enable or disable slider
     slideNumbersBorderColor: '#fff', // outside color for slide numbers
     slideNumbersColor: '#000', // interior color when slide numbers inactive
-    animationType: 'slow', // animation type: currently doesn't do anything
+    animationType: 'slow', // animation type: currently doesn't do anything,
+    animationDuration: 375,
     callback: false, // default is no callback
   };
 
@@ -524,13 +525,13 @@
         $("body,html").stop(true, true).animate({
           scrollTop: $(element).offset().top
         }, {
-          duration: 375
+          duration: settings.animationDuration
         });
       } else {
         $("body,html").stop(true, true).animate({
           scrollTop: $(document).outerHeight() - windowHeight
         }, {
-          duration: 375
+          duration: settings.animationDuration
         });
       }
     };
