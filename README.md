@@ -39,7 +39,13 @@ In case you missed the links above, here are a few demos showing the different w
 
 Here is an example for all the options needed for *Standard*:
 
-First ensure you have the proper HTML structure:
+First ensure you have the proper HTML structure: <br />
+`Download jquery.alton.js from assets`
+```html
+<head>
+	<script type="text/javascript" src="jquery.alton.js"></script>
+</head>
+```
 ```html
 <body class="pageWrapper">
 	<section class="full">
